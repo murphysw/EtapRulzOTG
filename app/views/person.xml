@@ -1,0 +1,14 @@
+<Alloy>
+	<Model id="contactPerson" src="person">
+	<View id="index" class="container">
+		<View id="doneLink">
+			<Label>Done</Label>
+		</View>
+		<View id="personView">
+			<Label id="name" doClick="saveContact">I'm a person</Label>	
+		</View>
+		<View id="saveLink">
+			<Label>Save</Label>
+		</View>
+	</View>
+</Alloy>

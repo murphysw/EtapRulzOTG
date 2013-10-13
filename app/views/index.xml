@@ -1,0 +1,13 @@
+<Alloy>
+	<Collection src="person"/>
+	<TabGroup>
+		<Tab title="Directory" icon="KS_nav_ui.png">
+			<Window id="tab1" title="Tab 1">
+			</Window>
+		</Tab>
+		<Tab title="Calendar" icon="KS_nav_views.png">
+			<Window id="tab2" title="Tab 2">
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>
