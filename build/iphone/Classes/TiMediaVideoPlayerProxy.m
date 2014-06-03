@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2014 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -88,6 +88,11 @@ NSArray* moviePlayerKeys = nil;
 	RELEASE_TO_NIL(loadProperties);
 	RELEASE_TO_NIL(playerLock);
 	[super _destroy];
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.Media.VideoPlayer";
 }
 
 -(void)configureNotifications
@@ -498,8 +503,7 @@ NSArray* moviePlayerKeys = nil;
 -(void)setVolume:(NSNumber *)newVolume
 {
 	double volume = [TiUtils doubleValue:newVolume def:-1.0];
-	ENSURE_VALUE_RANGE(volume, 0.0, 1.0);
-
+    volume = MAX(0.0, MIN(volume, 1.0));
 	TiThreadPerformOnMainThread(^{
 		[[MPMusicPlayerController applicationMusicPlayer] setVolume:volume];
 	}, NO);
@@ -858,7 +862,7 @@ NSArray* moviePlayerKeys = nil;
 			NSMutableDictionary *event;
 			if (reason!=nil)
 			{
-				event = [NSDictionary dictionaryWithObject:reason forKey:@"reason"];
+				event = [NSMutableDictionary dictionaryWithObject:reason forKey:@"reason"];
 			}
 			else
 			{
@@ -1018,7 +1022,7 @@ NSArray* moviePlayerKeys = nil;
 			if (!sizeSet) {
 				[self setFullscreen:[loadProperties valueForKey:@"fullscreen"]];
 			}
-			if (player.loadState == MPMovieLoadStatePlayable) {
+			if ((player.loadState & MPMovieLoadStatePlayable)==MPMovieLoadStatePlayable) {
 				if ([self _hasListeners:@"load"]) {
 					[self fireEvent:@"load" withObject:nil];
 				}

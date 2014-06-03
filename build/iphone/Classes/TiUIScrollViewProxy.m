@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2014 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -34,6 +34,11 @@ static NSArray* scrollViewKeySequence;
     [self initializeProperty:@"canCancelEvents" defaultValue:NUMBOOL(YES)];
     [self initializeProperty:@"scrollingEnabled" defaultValue:NUMBOOL(YES)];
     [super _initWithProperties:properties];
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.UI.ScrollView";
 }
 
 -(TiPoint *) contentOffset{
@@ -378,16 +383,17 @@ static NSArray* scrollViewKeySequence;
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-	CGPoint offset = [scrollView contentOffset];
-	if ([self _hasListeners:@"scroll"])
-	{
-		[self fireEvent:@"scroll" withObject:[NSDictionary dictionaryWithObjectsAndKeys:
-				NUMFLOAT(offset.x),@"x",
-				NUMFLOAT(offset.y),@"y",
-				NUMBOOL([scrollView isDecelerating]),@"decelerating",
-				NUMBOOL([scrollView isDragging]),@"dragging",
-				nil]];
-	}
+    CGPoint offset = [scrollView contentOffset];
+    if ([self _hasListeners:@"scroll"]) {
+        [self fireEvent:@"scroll" withObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                NUMFLOAT(offset.x),@"x",
+                NUMFLOAT(offset.y),@"y",
+                NUMFLOAT(scrollView.zoomScale),@"curZoomScale",
+                NUMBOOL([scrollView isZooming]),@"zooming",
+                NUMBOOL([scrollView isDecelerating]),@"decelerating",
+                NUMBOOL([scrollView isDragging]),@"dragging",
+                nil]];
+    }
 }
 
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale

@@ -1,0 +1,7 @@
+"Label": {
+	height: "28dp"
+},
+"#row": {
+	height: "28dp",
+	textAlign: "left"
+}

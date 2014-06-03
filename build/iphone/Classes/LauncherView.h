@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2014 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -66,6 +66,8 @@
 @property(nonatomic,assign) id<LauncherViewDelegate> delegate;
 @property(nonatomic,readonly) BOOL editing;
 @property(nonatomic,assign) BOOL editable;
+
+- (id)initWithFrame:(CGRect)frame withRowCount:(int)newRowCount withColumnCount:(int)newColumnCount;
 
 - (void)addItem:(LauncherItem*)item animated:(BOOL)animated;
 - (void)removeItem:(LauncherItem*)item animated:(BOOL)animated;

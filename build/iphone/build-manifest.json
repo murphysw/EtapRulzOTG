@@ -1,12 +1,12 @@
 {
 	"target": "simulator",
 	"deployType": "development",
-	"deviceFamily": "iphone",
-	"iosSdkPath": "/Users/ianthomas0/Library/Application Support/Titanium/mobilesdk/osx/3.1.3.GA/iphone",
-	"appGuid": "fc60852b-4ad0-4403-845f-727f7630fd71",
+	"deviceFamily": "universal",
+	"iosSdkPath": "/Users/rentexinc/Library/Application Support/Titanium/mobilesdk/osx/3.2.3.GA/iphone",
 	"tiCoreHash": "77157e1ffaec640cf559356a147b6a4c",
 	"modulesHash": "d41d8cd98f00b204e9800998ecf8427e",
-	"gitHash": "222f4d1",
+	"modulesNativeHash": "d41d8cd98f00b204e9800998ecf8427e",
+	"gitHash": "b958a70",
 	"name": "Cornerstone",
 	"id": "com.twinsoft.Cornerstone",
 	"analytics": true,
@@ -18,5 +18,6 @@
 	"guid": "fc60852b-4ad0-4403-845f-727f7630fd71",
 	"skipJSMinification": true,
 	"forceCopy": false,
-	"forceCopyAll": false
+	"forceCopyAll": false,
+	"encryptJS": false
 }

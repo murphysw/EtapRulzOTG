@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2014 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -50,6 +50,11 @@ OSSpinLock nodeRegistryLock = OS_SPINLOCK_INIT;
 	RELEASE_TO_NIL(node);
 	RELEASE_TO_NIL(document);
 	[super dealloc];
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.XML.Node";
 }
 
 -(NSString *)XMLString
@@ -374,7 +379,7 @@ CFHashCode	simpleHash(const void *value)
 
 -(void)setNodeValue:(NSString *)data
 {
-	[self throwException:[NSString stringWithFormat:@"Setting NodeValue not supported for %d type of Node",[self nodeType]] subreason:nil location:CODELOCATION];
+	[self throwException:[NSString stringWithFormat:@"Setting NodeValue not supported for %d type of Node",[[self nodeType] intValue]] subreason:nil location:CODELOCATION];
 }
 
 - (id)textContent

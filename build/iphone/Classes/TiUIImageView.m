@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2014 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -53,6 +53,10 @@ DEFINE_EXCEPTIONS
 {
 	if (autoWidth > 0)
 	{
+		//If height is DIP returned a scaled autowidth to maintain aspect ratio
+		if (TiDimensionIsDip(height) && autoHeight > 0) {
+			return roundf(autoWidth*height.value/autoHeight);
+		}
 		return autoWidth;
 	}
 	

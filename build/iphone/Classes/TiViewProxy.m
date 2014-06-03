@@ -1,6 +1,6 @@
 /**
  * Appcelerator Titanium Mobile
- * Copyright (c) 2009-2013 by Appcelerator, Inc. All Rights Reserved.
+ * Copyright (c) 2009-2014 by Appcelerator, Inc. All Rights Reserved.
  * Licensed under the terms of the Apache Public License
  * Please see the LICENSE included with this distribution for details.
  * 
@@ -16,6 +16,7 @@
 #import "TiStylesheet.h"
 #import "TiLocale.h"
 #import "TiUIView.h"
+#import "TiApp.h"
 
 #import <QuartzCore/QuartzCore.h>
 #import <libkern/OSAtomic.h>
@@ -46,6 +47,13 @@
 @synthesize children;
 -(NSArray*)children
 {
+    if (![NSThread isMainThread]) {
+        __block NSArray* result = nil;
+        TiThreadPerformOnMainThread(^{
+            result = [[self children] retain];
+        }, YES);
+        return [result autorelease];
+    }
     NSArray* copy = nil;
     
 	pthread_rwlock_rdlock(&childrenLock);
@@ -58,6 +66,11 @@
     }
 	pthread_rwlock_unlock(&childrenLock);
 	return ((copy != nil) ? [copy autorelease] : [NSMutableArray array]);
+}
+
+-(NSString*)apiName
+{
+    return @"Ti.View";
 }
 
 -(void)setVisible:(NSNumber *)newVisible withObject:(id)args
@@ -468,7 +481,7 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 	TiRect *rect = [[TiRect alloc] init];
     if ([self viewAttached]) {
         [self makeViewPerformSelector:@selector(fillBoundsToRect:) withObject:rect createIfNeeded:YES waitUntilDone:YES];
-        id defaultUnit = [[NSUserDefaults standardUserDefaults] objectForKey:@"ti.ui.defaultunit"];
+        id defaultUnit = [[TiApp tiAppProperties] objectForKey:@"ti.ui.defaultunit"];
         if ([defaultUnit isKindOfClass:[NSString class]]) {
             [rect convertToUnit:defaultUnit];
         }
@@ -501,7 +514,7 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
         viewRect.origin.y += viewPosition.y;
         [rect setRect:viewRect];
         
-        id defaultUnit = [[NSUserDefaults standardUserDefaults] objectForKey:@"ti.ui.defaultunit"];
+        id defaultUnit = [[TiApp tiAppProperties] objectForKey:@"ti.ui.defaultunit"];
         if ([defaultUnit isKindOfClass:[NSString class]]) {
             [rect convertToUnit:defaultUnit];
         }       
@@ -1013,27 +1026,6 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 
 #pragma mark Recognizers
 
--(void)recognizedPinch:(UIPinchGestureRecognizer*)recognizer 
-{ 
-    NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
-                           NUMDOUBLE(recognizer.scale), @"scale", 
-                           NUMDOUBLE(recognizer.velocity), @"velocity", 
-                           nil]; 
-    [self fireEvent:@"pinch" withObject:event]; 
-}
-
--(void)recognizedLongPress:(UILongPressGestureRecognizer*)recognizer 
-{ 
-    if ([recognizer state] == UIGestureRecognizerStateBegan) {
-        CGPoint p = [recognizer locationInView:self.view];
-        NSDictionary *event = [NSDictionary dictionaryWithObjectsAndKeys:
-                               NUMFLOAT(p.x), @"x",
-                               NUMFLOAT(p.y), @"y",
-                               nil];
-        [self fireEvent:@"longpress" withObject:event]; 
-    }
-}
-
 -(TiUIView*)view
 {
 	if (view == nil)
@@ -1049,18 +1041,6 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 		[self viewWillAttach];
 		view = [self newView];
 
-        // check listeners dictionary to see if we need gesture recognizers
-        if ([self _hasListeners:@"pinch"]) {
-            UIPinchGestureRecognizer* r = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedPinch:)];
-            [view addGestureRecognizer:r];
-            [r release];
-        }
-        if ([self _hasListeners:@"longpress"]) {
-            UILongPressGestureRecognizer* r = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(recognizedLongPress:)];
-            [view addGestureRecognizer:r];
-            [r release];
-        }
-        
 		view.proxy = self;
 		view.layer.transform = CATransform3DIdentity;
 		view.transform = CGAffineTransformIdentity;
@@ -1327,7 +1307,7 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 -(CGRect)appFrame	//TODO: Why is this here? It doesn't have anything to do with a specific instance.
 {
 	CGRect result = [[[[TiApp app] controller] view] bounds];
-    return result;
+	return result;
 }
 
 
@@ -1626,9 +1606,17 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 
 #pragma mark Listener Management
 
+-(BOOL)_hasListeners:(NSString *)type checkParent:(BOOL)check
+{
+    BOOL returnVal = [super _hasListeners:type];
+    if (!returnVal && check) {
+        returnVal = [[self parentForBubbling] _hasListeners:type];
+    }
+	return returnVal;
+}
 -(BOOL)_hasListeners:(NSString *)type
 {
-	return [super _hasListeners:type] || [[self parentForBubbling] _hasListeners:type];
+	return [self _hasListeners:type checkParent:YES];
 }
 
 //TODO: Remove once we've properly deprecated.
@@ -1671,6 +1659,14 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 	}
 }
 
+-(void)parentListenersChanged
+{
+    TiThreadPerformOnMainThread(^{
+        if (view != nil && [view respondsToSelector:@selector(updateTouchHandling)]) {
+            [view updateTouchHandling];
+        }
+    }, NO);
+}
 
 -(void)_listenerAdded:(NSString*)type count:(int)count
 {
@@ -1684,6 +1680,15 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 			[self.view listenerAdded:type count:count];
 		}
 	}
+    
+    //TIMOB-15991 Update children as well
+    NSArray* childrenArray = [[self children] retain];
+    for (id child in childrenArray) {
+        if ([child respondsToSelector:@selector(parentListenersChanged)]) {
+            [child parentListenersChanged];
+        }
+    }
+    [childrenArray release];
 }
 
 -(void)_listenerRemoved:(NSString*)type count:(int)count
@@ -1698,6 +1703,15 @@ LAYOUTFLAGS_SETTER(setHorizontalWrap,horizontalWrap,horizontalWrap,[self willCha
 			[self.view listenerRemoved:type count:count];
 		}
 	}
+
+    //TIMOB-15991 Update children as well
+    NSArray* childrenArray = [[self children] retain];
+    for (id child in childrenArray) {
+        if ([child respondsToSelector:@selector(parentListenersChanged)]) {
+            [child parentListenersChanged];
+        }
+    }
+    [childrenArray release];
 }
 
 -(TiProxy *)parentForBubbling
@@ -2125,65 +2139,60 @@ if(OSAtomicTestAndSetBarrier(flagBit, &dirtyflags))	\
 -(void)refreshPosition
 {
 	OSAtomicTestAndClearBarrier(TiRefreshViewPosition, &dirtyflags);
-
 }
 
 -(void)refreshSize
 {
 	OSAtomicTestAndClearBarrier(TiRefreshViewSize, &dirtyflags);
-
-
 }
 
 -(void)insertSubview:(UIView *)childView forProxy:(TiViewProxy *)childProxy
 {
-	
-	int result = 0;
-	int childZindex = [childProxy vzIndex];
-	BOOL earlierSibling = YES;
-	UIView * ourView = [self parentViewForChild:childProxy];
+    NSUInteger result = 0;
+    UIView * ourView = [self parentViewForChild:childProxy];
+    
+    if (ourView==nil || childView == nil) {
+        return;
+    }
+    
+    UIView* lastView = nil;
 
     if (![self optimizeSubviewInsertion]) {
-        for (UIView* subview in [ourView subviews]) 
-        {
+        NSArray* subViews = [[ourView subviews] retain];
+        
+        for (UIView* subview in subViews) {
             if (![subview isKindOfClass:[TiUIView class]]) {
                 result++;
+                lastView = subview;
             }
         }
+        [subViews release];
     }
-	pthread_rwlock_rdlock(&childrenLock);
-	for (TiViewProxy * thisChildProxy in children)
-	{
-		if(thisChildProxy == childProxy)
-		{
-			earlierSibling = NO;
-			continue;
-		}
-		
-		if(![thisChildProxy viewHasSuperview:ourView])
-		{
-			continue;
-		}
-		
-		int thisChildZindex = [thisChildProxy vzIndex];
-		if((thisChildZindex < childZindex) ||
-				(earlierSibling && (thisChildZindex == childZindex)))
-		{
-			result ++;
-		}
-	}
-	pthread_rwlock_unlock(&childrenLock);
-    if (result == 0) {
-        [ourView insertSubview:childView atIndex:result];
+    
+    pthread_rwlock_rdlock(&childrenLock);
+    
+    NSArray *sortedArray;
+    sortedArray = [children sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        int first = [(TiViewProxy*)a vzIndex];
+        int second = [(TiViewProxy*)b vzIndex];
+        return (first > second) ? NSOrderedDescending : ( first < second ? NSOrderedAscending : NSOrderedSame );
+    }];
+    
+    
+    for (TiViewProxy * thisChildProxy in sortedArray) {
+        if ([thisChildProxy viewInitialized] ) {
+            UIView* newView = [thisChildProxy view];
+            if (lastView == nil) {
+                [ourView insertSubview:newView atIndex:result];
+            } else {
+                [ourView insertSubview:newView aboveSubview:lastView];
+            }
+            result ++;
+            lastView = newView;
+        }
     }
-    else {
-        //Doing a blind insert at index messes up the underlying sublayer indices
-        //if there are layers which do not belong to subviews (backgroundGradient)
-        //So ensure the subview layer goes at the right index
-        //See TIMOB-11586 for fail case
-        UIView *sibling = [[ourView subviews] objectAtIndex:result-1];
-        [ourView insertSubview:childView aboveSubview:sibling];
-    }
+    pthread_rwlock_unlock(&childrenLock);
+    
 }
 
 
@@ -2223,8 +2232,9 @@ if(OSAtomicTestAndSetBarrier(flagBit, &dirtyflags))	\
 		[view setAutoresizingMask:autoresizeCache];
 		[view setCenter:positionCache];
 		[view setBounds:sizeCache];
-
-		[parent insertSubview:view forProxy:self];
+		if ([view superview] != parentView) {
+			[parent insertSubview:view forProxy:self];
+		}
 
 		[self refreshSize];
 		[self refreshPosition];
@@ -2273,7 +2283,7 @@ if(OSAtomicTestAndSetBarrier(flagBit, &dirtyflags))	\
 
 -(BOOL)willBeRelaying
 {
-    DebugLog(@"DIRTY FLAGS %d WILLBERELAYING %d",dirtyflags, (*((char*)&dirtyflags) & (1 << (7 - TiRefreshViewEnqueued))));
+    DeveloperLog(@"DIRTY FLAGS %d WILLBERELAYING %d",dirtyflags, (*((char*)&dirtyflags) & (1 << (7 - TiRefreshViewEnqueued))));
     return ((*((char*)&dirtyflags) & (1 << (7 - TiRefreshViewEnqueued))) != 0);
 }
 
@@ -2734,50 +2744,8 @@ if(OSAtomicTestAndSetBarrier(flagBit, &dirtyflags))	\
 	if (optimize==NO)
 	{
 		TiUIView *childView = [child view];
-		if ([childView superview]!=ourView)
-		{	
-			//TODO: Optimize!
-			int insertPosition = 0;
-			int childZIndex = [child vzIndex];
-			
-			pthread_rwlock_rdlock(&childrenLock);
-			int childProxyIndex = [children indexOfObject:child];
-            
-			BOOL optimizeInsertion = [self optimizeSubviewInsertion];
-
-			for (TiUIView * thisView in [ourView subviews])
-			{
-				if ( (!optimizeInsertion) && (![thisView isKindOfClass:[TiUIView class]]) )
-				{
-					insertPosition ++;
-					continue;
-				}
-                
-				int thisZIndex=[(TiViewProxy *)[thisView proxy] vzIndex];
-				if (childZIndex < thisZIndex) //We've found our stop!
-				{
-					break;
-				}
-				if (childZIndex == thisZIndex)
-				{
-					TiProxy * thisProxy = [thisView proxy];
-					if (childProxyIndex <= [children indexOfObject:thisProxy])
-					{
-						break;
-					}
-				}
-				insertPosition ++;
-			}
-			
-			[ourView insertSubview:childView atIndex:insertPosition];
-			pthread_rwlock_unlock(&childrenLock); // must release before calling resize
-			
-//            TIMOB-14488. This is a bad message. We should not be signalling a child
-//            resize to the parent when the parent is laying out the child.
-//            if ( !CGSizeEqualToSize(child.sandboxBounds.size, bounds.size) ) {
-//                //Child will not resize if sandbox size does not change
-//                [self childWillResize:child];
-//            }
+		if ([childView superview]!=ourView) {
+			[self insertSubview:childView forProxy:child];
 		}
 	}
 	[child setSandboxBounds:bounds];

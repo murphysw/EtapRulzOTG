@@ -1,5 +1,10 @@
 <Alloy>
-	<View id="container">
-		<TableView id="directory" />
-	</View>
+	<Collection src="Person" />
+	<Tab id="directoryTab" title="Directory" icon="KS_nav_ui.png">
+		<Window id="directoryWindow">
+			<TableView dataCollection="Person" id="directory">
+				<Require src="directoryRow">
+			</TableView>
+		</Window>
+	</Tab>
 </Alloy>
