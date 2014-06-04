@@ -1,7 +1,7 @@
 <Alloy>
-	<TableViewRow data_modelId="{alloy_id}" id="row" dataId=""  >
-		<View class="vgroup">
-			<Label id="name" text="{FirstName}"/>
+	<TableViewRow class="row" dataId=""  >
+		<View id="wrapper">
+			<Label id="name" text="{name}" />
 		</View>
 	</TableViewRow>
 </Alloy>

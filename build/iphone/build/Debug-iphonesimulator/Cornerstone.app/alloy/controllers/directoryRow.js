@@ -6,24 +6,42 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.row = Ti.UI.createTableViewRow({
-        height: "28dp",
-        model: "undefined" != typeof $model.__transform["alloy_id"] ? $model.__transform["alloy_id"] : $model.get("alloy_id"),
-        data_modelId: "undefined" != typeof $model.__transform["alloy_id"] ? $model.__transform["alloy_id"] : $model.get("alloy_id"),
-        id: "row",
-        dataId: ""
+    $.__views.directoryRow = Ti.UI.createTableViewRow({
+        height: "40dp",
+        backgroundColor: "#F3F3F3",
+        dataId: "",
+        id: "directoryRow"
     });
-    $.__views.row && $.addTopLevelView($.__views.row);
-    $.__views.__alloyId7 = Ti.UI.createView({
-        id: "__alloyId7"
+    $.__views.directoryRow && $.addTopLevelView($.__views.directoryRow);
+    $.__views.wrapper = Ti.UI.createView({
+        backgroundColor: "#fff",
+        borderRadius: 8,
+        borderColor: "#000",
+        borderWidth: 2,
+        width: 300,
+        height: 300,
+        top: 20,
+        layout: "vertical",
+        id: "wrapper"
     });
-    $.__views.row.add($.__views.__alloyId7);
+    $.__views.directoryRow.add($.__views.wrapper);
     $.__views.name = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
         height: "28dp",
+        color: "#000",
+        font: {
+            fontSize: 20,
+            fontFamily: "Helvetica Neue"
+        },
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        borderRadius: "5dp",
+        backgroundPaddingBottom: "5dp",
+        backgroundPaddingTop: "5dp",
+        left: "10dp",
         id: "name",
-        text: "undefined" != typeof $model.__transform["FirstName"] ? $model.__transform["FirstName"] : $model.get("FirstName")
+        text: "undefined" != typeof $model.__transform["name"] ? $model.__transform["name"] : $model.get("name")
     });
-    $.__views.__alloyId7.add($.__views.name);
+    $.__views.wrapper.add($.__views.name);
     exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);

@@ -1,13 +1,6 @@
 "Window": {
-	backgroundColor: "#333"
+	backgroundColor: "transparent"
 },
-"Label": {
-	width: Ti.UI.SIZE,
-	height: "28dp",
-	color: "#000",
-	font: {
-		fontSize: 20,
-		fontFamily: 'Helvetica Neue'
-	},
-	textAlign: 'center'
+".container": {
+	backgroundColor: "#333"
 }

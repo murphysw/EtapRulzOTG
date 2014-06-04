@@ -1,22 +1,27 @@
 function Controller() {
-    function __alloyId6(e) {
+    function __alloyId8(e) {
         if (e && e.fromAdapter) return;
-        __alloyId6.opts || {};
-        var models = dofilter(__alloyId5);
+        __alloyId8.opts || {};
+        var models = dofilter(__alloyId7);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId2 = models[i];
-            __alloyId2.__transform = {};
-            var __alloyId4 = Alloy.createController("directoryRow", {
-                $model: __alloyId2,
+            var __alloyId4 = models[i];
+            __alloyId4.__transform = {};
+            var __alloyId6 = Alloy.createController("directoryRow", {
+                $model: __alloyId4,
                 __parentSymbol: __parentSymbol
             });
-            rows.push(__alloyId4.getViewEx({
+            rows.push(__alloyId6.getViewEx({
                 recurse: true
             }));
         }
         $.__views.directoryTable.setData(rows);
+    }
+    function dataTransformation() {
+        return {
+            name: _model.attributes.FirstName + " " + _model.attributes.LastName
+        };
     }
     function dofilter() {
         return peopleCollection.filter(function() {
@@ -32,16 +37,17 @@ function Controller() {
     var exports = {};
     Alloy.Collections.instance("Person");
     $.__views.directoryWindow = Ti.UI.createWindow({
-        backgroundColor: "#333",
+        backgroundColor: "transparent",
         id: "directoryWindow",
         title: "Directory"
     });
     $.__views.directoryTable = Ti.UI.createTableView({
+        backgroundColor: "#333",
         id: "directoryTable"
     });
     $.__views.directoryWindow.add($.__views.directoryTable);
-    var __alloyId5 = Alloy.Collections["Person"] || Person;
-    __alloyId5.on("fetch destroy change add remove reset", __alloyId6);
+    var __alloyId7 = Alloy.Collections["Person"] || Person;
+    __alloyId7.on("fetch destroy change add remove reset", __alloyId8);
     $.__views.directoryTab = Ti.UI.createTab({
         window: $.__views.directoryWindow,
         id: "directoryTab",
@@ -50,10 +56,15 @@ function Controller() {
     });
     $.__views.directoryTab && $.addTopLevelView($.__views.directoryTab);
     exports.destroy = function() {
-        __alloyId5.off("fetch destroy change add remove reset", __alloyId6);
+        __alloyId7.off("fetch destroy change add remove reset", __alloyId8);
     };
     _.extend($, $.__views);
     var peopleCollection = Alloy.Collections.Person;
+    $.directoryTable = _.extend({}, $.directoryTable, {
+        transform: function() {
+            return dataTransformation(peopleCollection);
+        }
+    });
     $.directoryTable.addEventListener("click", function(_e) {
         var detailController = Alloy.createController("person", {
             parentTab: $.directoryTab,

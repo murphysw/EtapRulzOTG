@@ -1,44 +1,20 @@
-/*     	var p = Titanium.Contacts.createPerson({
-     		firstName: person.FirstName,
-		  	lastName: person.LastName,
-		  	address:{
-		    	home:[
-		      	  {
-			        CountryCode: 'us', // determines how the address is displayed
-			        Street: person.AddressStreet,
-			        City: person.AddressCity,
-			        State: person.AddressState,
-			        ZIP: person.AddressZip
-		      	 }
-		     ]
-		  },
-		  phone:{
-		    mobile: [person.Phone]
-		  }
-		});
-     	//var name = p.getFirstName() + " " + p.getLastName();
-     	//var row = Alloy.createController("directoryRow", {
-     	//	name: name
- 		//});
-     	row.hasDetail = true;
-     	row.addEventListener("click", function() {
-     		var personView = Alloy.createController("person", {
-     			parent: $.directoryTab,
-     			data: person	
-     			
- 			});
- 			
- 			$.directoryTab.open(personView.getView());
-     	});
-     	
-     	//people.push(p);
-     	//data.push(row);
-     });
-	       
-     //$.directoryTab.setData(data);
-
-};*/
 var peopleCollection = Alloy.Collections.Person;
+
+$.directoryTable = _.extend({}, $.directoryTable, {
+    transform : function() {
+        return dataTransformation(peopleCollection);
+    }
+});
+
+function dataTransformation(_collection) {
+    return {
+        name : _model.attributes.FirstName + " " +  _model.attributes.LastName,
+    };
+    
+    return fugitiveCollection.filter(function(_i){
+        return !_i.attributes.captured
+    });
+}
 
 function dofilter(_collection) {
     return peopleCollection.filter(function(_i){

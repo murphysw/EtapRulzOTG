@@ -13,8 +13,8 @@ NSString * const TI_APPLICATION_PUBLISHER = @"Ian Thomas";
 NSString * const TI_APPLICATION_URL = @"http://www.cornerstoneofgreenwood.com";
 NSString * const TI_APPLICATION_NAME = @"Cornerstone";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
-NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
-NSString * const TI_APPLICATION_COPYRIGHT = @"2013 by ianthomas0";
+NSString * const TI_APPLICATION_DESCRIPTION = @"This is the utility app for Cornerstone Bible Church in Greenwood, IN.";
+NSString * const TI_APPLICATION_COPYRIGHT = @"2013 by Ian Thomas";
 NSString * const TI_APPLICATION_GUID = @"fc60852b-4ad0-4403-845f-727f7630fd71";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 
