@@ -51,13 +51,13 @@ function Controller() {
         id: "saveContactButton"
     });
     $.__views.detailWindow.add($.__views.saveContactButton);
-    var __alloyId12 = function() {
+    var __alloyId22 = function() {
         $.name_lbl.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["FirstName"] : $.personDetail.get("FirstName");
         $.name_lbl.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["FirstName"] : $.personDetail.get("FirstName");
     };
-    $.personDetail.on("fetch change destroy", __alloyId12);
+    $.personDetail.on("fetch change destroy", __alloyId22);
     exports.destroy = function() {
-        $.personDetail.off("fetch change destroy", __alloyId12);
+        $.personDetail.off("fetch change destroy", __alloyId22);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};

@@ -1,20 +1,9 @@
 var peopleCollection = Alloy.Collections.Person;
 
-$.directoryTable = _.extend({}, $.directoryTable, {
-    transform : function() {
-        return dataTransformation(peopleCollection);
-    }
-});
-
-function dataTransformation(_collection) {
-    return {
-        name : _model.attributes.FirstName + " " +  _model.attributes.LastName,
-    };
-    
-    return fugitiveCollection.filter(function(_i){
-        return !_i.attributes.captured
-    });
-}
+function dataTransform(person) {
+	person.set("name", person.get("FirstName") + " " +  person.get("LastName"));
+	return person;
+};
 
 function dofilter(_collection) {
     return peopleCollection.filter(function(_i){

@@ -1,7 +1,0 @@
-<Alloy>
-	<TableViewRow class="row" dataId=""  >
-		<View id="wrapper">
-			<Label id="name" text="{name}" />
-		</View>
-	</TableViewRow>
-</Alloy>

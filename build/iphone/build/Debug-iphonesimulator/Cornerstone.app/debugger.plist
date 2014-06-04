@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>host</key>
-	<string></string>
+	<string>172.22.13.126</string>
 	<key>port</key>
-	<string></string>
+	<string>57284</string>
 	<key>airkey</key>
 	<string></string>
 	<key>hosts</key>

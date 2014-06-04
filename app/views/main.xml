@@ -1,0 +1,9 @@
+<Alloy>
+	<TabGroup id="tabGroup">
+		<Require src="directory"/>
+		<Tab id="calendar" title="Calendar" icon="KS_nav_views.png">
+			<Window id="tab2" title="Tab 2">
+			</Window>
+		</Tab>
+	</TabGroup>
+</Alloy>

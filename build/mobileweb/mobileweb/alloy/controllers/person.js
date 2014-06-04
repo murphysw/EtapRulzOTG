@@ -41,7 +41,7 @@ function Controller() {
             fontSize: 20,
             fontFamily: "Helvetica Neue"
         },
-        textAlign: "center",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
         id: "name_lbl"
     });
     $.__views.detailWindow.add($.__views.name_lbl);
@@ -51,13 +51,13 @@ function Controller() {
         id: "saveContactButton"
     });
     $.__views.detailWindow.add($.__views.saveContactButton);
-    var __alloyId11 = function() {
+    var __alloyId22 = function() {
         $.name_lbl.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["FirstName"] : $.personDetail.get("FirstName");
         $.name_lbl.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["FirstName"] : $.personDetail.get("FirstName");
     };
-    $.personDetail.on("fetch change destroy", __alloyId11);
+    $.personDetail.on("fetch change destroy", __alloyId22);
     exports.destroy = function() {
-        $.personDetail.off("fetch change destroy", __alloyId11);
+        $.personDetail.off("fetch change destroy", __alloyId22);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};
