@@ -2,7 +2,7 @@ function Controller() {
     function __alloyId6(e) {
         if (e && e.fromAdapter) return;
         __alloyId6.opts || {};
-        var models = __alloyId5.models;
+        var models = dofilter(__alloyId5);
         var len = models.length;
         var rows = [];
         for (var i = 0; len > i; i++) {
@@ -16,7 +16,12 @@ function Controller() {
                 recurse: true
             }));
         }
-        $.__views.directory.setData(rows);
+        $.__views.directoryTable.setData(rows);
+    }
+    function dofilter() {
+        return peopleCollection.filter(function() {
+            return true;
+        });
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "directory";
@@ -28,12 +33,13 @@ function Controller() {
     Alloy.Collections.instance("Person");
     $.__views.directoryWindow = Ti.UI.createWindow({
         backgroundColor: "#333",
-        id: "directoryWindow"
+        id: "directoryWindow",
+        title: "Directory"
     });
-    $.__views.directory = Ti.UI.createTableView({
-        id: "directory"
+    $.__views.directoryTable = Ti.UI.createTableView({
+        id: "directoryTable"
     });
-    $.__views.directoryWindow.add($.__views.directory);
+    $.__views.directoryWindow.add($.__views.directoryTable);
     var __alloyId5 = Alloy.Collections["Person"] || Person;
     __alloyId5.on("fetch destroy change add remove reset", __alloyId6);
     $.__views.directoryTab = Ti.UI.createTab({
@@ -47,10 +53,11 @@ function Controller() {
         __alloyId5.off("fetch destroy change add remove reset", __alloyId6);
     };
     _.extend($, $.__views);
-    $.directory.addEventListener("click", function(_e) {
+    var peopleCollection = Alloy.Collections.Person;
+    $.directoryTable.addEventListener("click", function(_e) {
         var detailController = Alloy.createController("person", {
             parentTab: $.directoryTab,
-            data: Alloy.Collections.Person.get(_e.rowData.model)
+            data: Alloy.Collections.Person.models[_e.index]
         });
         $.directoryTab.open(detailController.getView());
     });

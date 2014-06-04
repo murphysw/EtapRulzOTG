@@ -8,10 +8,10 @@ function Controller() {
     var exports = {};
     $.__views.row = Ti.UI.createTableViewRow({
         height: "28dp",
-        textAlign: "left",
+        model: "undefined" != typeof $model.__transform["alloy_id"] ? $model.__transform["alloy_id"] : $model.get("alloy_id"),
+        data_modelId: "undefined" != typeof $model.__transform["alloy_id"] ? $model.__transform["alloy_id"] : $model.get("alloy_id"),
         id: "row",
-        dataId: "",
-        model: "undefined" != typeof $model.__transform["alloy_id"] ? $model.__transform["alloy_id"] : $model.get("alloy_id")
+        dataId: ""
     });
     $.__views.row && $.addTopLevelView($.__views.row);
     $.__views.__alloyId7 = Ti.UI.createView({

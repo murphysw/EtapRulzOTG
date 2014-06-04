@@ -1,8 +1,8 @@
 <Alloy>
 	<Collection src="Person" />
 	<Tab id="directoryTab" title="Directory" icon="KS_nav_ui.png">
-		<Window id="directoryWindow">
-			<TableView dataCollection="Person" id="directory">
+		<Window id="directoryWindow" title="Directory">
+			<TableView dataCollection="Person" id="directoryTable" dataFilter="dofilter">
 				<Require src="directoryRow">
 			</TableView>
 		</Window>

@@ -1,0 +1,8 @@
+<Alloy>
+    <Model src="Person" instance="true" id="personDetail"> 
+    <!-- dataTransform is not wired up yet, but i hacked it into my code -->
+	<Window id="detailWindow" model="$.personDetail" dataTransform="dataTransformation">
+		<Label id="name_lbl" text="{$.personDetail.FirstName}" ></Label>
+		<Button id="saveContactButton"></Button>
+	</Window>
+</Alloy>

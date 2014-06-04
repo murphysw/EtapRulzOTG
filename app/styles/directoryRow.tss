@@ -3,5 +3,5 @@
 },
 "#row": {
 	height: "28dp",
-	textAlign: "left"
+	model: "{alloy_id}"
 }

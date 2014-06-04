@@ -37,8 +37,7 @@ function Controller() {
         var client = Ti.Network.createHTTPClient({
             onload: function() {
                 Ti.API.info("Received text: " + this.responseText);
-                people = JSON.parse(this.responseText);
-                Alloy.Collections.Person.reset(people);
+                Alloy.Collections.Person.reset(JSON.parse(this.responseText));
                 $.tabGroup.open();
             },
             onerror: function(e) {

@@ -38,10 +38,18 @@
      //$.directoryTab.setData(data);
 
 };*/
-$.directory.addEventListener('click', function(_e) {
+var peopleCollection = Alloy.Collections.Person;
+
+function dofilter(_collection) {
+    return peopleCollection.filter(function(_i){
+        return true;
+    });
+}
+
+$.directoryTable.addEventListener('click', function(_e) {
     var detailController = Alloy.createController('person', {
         parentTab : $.directoryTab,
-        data : Alloy.Collections.Person.get(_e.rowData.model)
+        data : Alloy.Collections.Person.models[_e.index]
     });
     $.directoryTab.open(detailController.getView());
 });

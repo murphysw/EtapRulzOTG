@@ -11,8 +11,9 @@
 	},
 	textAlign: 'center'
 },
-"#saveLink": {
-	top: '5dp'
+"#saveContactButton": {
+	top: '5dp',
+	title: "Save Contact"
 }, 
 
 "#doneLink": {

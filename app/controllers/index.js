@@ -4,8 +4,7 @@ if (!Ti.App.Properties.hasProperty('seeded')) {
 	     // function called when the response data is available
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
-	         people = JSON.parse(this.responseText);
-	         Alloy.Collections.Person.reset(people);
+	         Alloy.Collections.Person.reset(JSON.parse(this.responseText));
 	         /*Alloy.Collections.Person.each(function(_m) {
         	 	_m.save();
     		 });*/
