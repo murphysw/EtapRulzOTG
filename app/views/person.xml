@@ -2,7 +2,13 @@
     <Model src="Person" instance="true" id="personDetail"> 
     <!-- dataTransform is not wired up yet, but i hacked it into my code -->
 	<Window id="detailWindow" model="$.personDetail" dataTransform="dataTransformation">
-		<Label id="name_lbl" text="{$.personDetail.FirstName}" ></Label>
+		<Label id="firstNameLabel" text="{$.personDetail.FirstName}" ></Label>
+		<Label id="lastNameLabel" text="{$.personDetail.LastName}" ></Label>
+		<Label id="addressLabel" text="{$.personDetail.AddressStreet}" ></Label>
+		<Label id="cityLabel" text="{$.personDetail.AddressCity}" ></Label>
+		<Label id="stateLabel" text="{$.personDetail.AddressState}" ></Label>
+		<Label id="phoneLabel" text="{$.personDetail.Phone}" ></Label>
+		<Label id="emailLabel" text="{$.personDetail.Email}" ></Label>
 		<Button id="saveContactButton"></Button>
 	</Window>
 </Alloy>

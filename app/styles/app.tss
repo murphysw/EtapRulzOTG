@@ -6,6 +6,6 @@
 		fontSize: 20,
 		fontFamily: 'Helvetica Neue'
 	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_CENTER,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
 	
 }

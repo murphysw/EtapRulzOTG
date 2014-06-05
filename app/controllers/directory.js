@@ -11,10 +11,10 @@ function dofilter(_collection) {
     });
 }
 
-$.directoryTable.addEventListener('click', function(_e) {
+$.directoryList.addEventListener('itemclick', function(_e) {
     var detailController = Alloy.createController('person', {
         parentTab : $.directoryTab,
-        data : Alloy.Collections.Person.models[_e.index]
+        data : Alloy.Collections.Person.models[_e.itemIndex]
     });
     $.directoryTab.open(detailController.getView());
 });

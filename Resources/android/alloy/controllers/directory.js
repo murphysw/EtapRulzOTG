@@ -1,24 +1,24 @@
 function Controller() {
-    function __alloyId17(e) {
+    function __alloyId16(e) {
         if (e && e.fromAdapter) return;
-        var opts = __alloyId17.opts || {};
-        var models = __alloyId16.models;
+        var opts = __alloyId16.opts || {};
+        var models = __alloyId15.models;
         var len = models.length;
-        var __alloyId12 = [];
+        var __alloyId11 = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId13 = models[i];
-            __alloyId13.__transform = dataTransform(__alloyId13);
-            var __alloyId15 = {
+            var __alloyId12 = models[i];
+            __alloyId12.__transform = dataTransform(__alloyId12);
+            var __alloyId14 = {
                 name: {
-                    text: "undefined" != typeof __alloyId13.__transform["name"] ? __alloyId13.__transform["name"] : __alloyId13.get("name")
+                    text: "undefined" != typeof __alloyId12.__transform["name"] ? __alloyId12.__transform["name"] : __alloyId12.get("name")
                 },
                 properties: {
-                    searchableText: "undefined" != typeof __alloyId13.__transform["name"] ? __alloyId13.__transform["name"] : __alloyId13.get("name")
+                    searchableText: "undefined" != typeof __alloyId12.__transform["name"] ? __alloyId12.__transform["name"] : __alloyId12.get("name")
                 }
             };
-            __alloyId12.push(__alloyId15);
+            __alloyId11.push(__alloyId14);
         }
-        opts.animation ? $.__views.__alloyId11.setItems(__alloyId12, opts.animation) : $.__views.__alloyId11.setItems(__alloyId12);
+        opts.animation ? $.__views.peopleSection.setItems(__alloyId11, opts.animation) : $.__views.peopleSection.setItems(__alloyId11);
     }
     function dataTransform(person) {
         person.set("name", person.get("FirstName") + " " + person.get("LastName"));
@@ -88,22 +88,22 @@ function Controller() {
         childTemplates: __alloyId6
     };
     __alloyId3["template"] = __alloyId5;
-    $.__views.__alloyId11 = Ti.UI.createListSection({
-        id: "__alloyId11"
+    $.__views.peopleSection = Ti.UI.createListSection({
+        id: "peopleSection"
     });
-    var __alloyId16 = Alloy.Collections["Person"] || Person;
-    __alloyId16.on("fetch destroy change add remove reset", __alloyId17);
-    var __alloyId18 = [];
-    __alloyId18.push($.__views.__alloyId11);
-    $.__views.directoryTable = Ti.UI.createListView({
+    var __alloyId15 = Alloy.Collections["Person"] || Person;
+    __alloyId15.on("fetch destroy change add remove reset", __alloyId16);
+    var __alloyId17 = [];
+    __alloyId17.push($.__views.peopleSection);
+    $.__views.directoryList = Ti.UI.createListView({
         backgroundColor: "#333",
-        sections: __alloyId18,
+        sections: __alloyId17,
         templates: __alloyId3,
         searchView: $.__views.__alloyId2,
-        id: "directoryTable",
+        id: "directoryList",
         defaultItemTemplate: "template"
     });
-    $.__views.directoryWindow.add($.__views.directoryTable);
+    $.__views.directoryWindow.add($.__views.directoryList);
     $.__views.directoryTab = Ti.UI.createTab({
         window: $.__views.directoryWindow,
         id: "directoryTab",
@@ -112,14 +112,14 @@ function Controller() {
     });
     $.__views.directoryTab && $.addTopLevelView($.__views.directoryTab);
     exports.destroy = function() {
-        __alloyId16.off("fetch destroy change add remove reset", __alloyId17);
+        __alloyId15.off("fetch destroy change add remove reset", __alloyId16);
     };
     _.extend($, $.__views);
     Alloy.Collections.Person;
-    $.directoryTable.addEventListener("click", function(_e) {
+    $.directoryList.addEventListener("itemclick", function(_e) {
         var detailController = Alloy.createController("person", {
             parentTab: $.directoryTab,
-            data: Alloy.Collections.Person.models[_e.index]
+            data: Alloy.Collections.Person.models[_e.itemIndex]
         });
         $.directoryTab.open(detailController.getView());
     });

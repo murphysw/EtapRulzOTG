@@ -4,7 +4,7 @@
 		<Window id="directoryWindow" title="Directory">
 			<ListView class="container" id="directoryList" dataFilter="dofilter" defaultItemTemplate="template">
 				<SearchBar barColor="#333" />
-				<ListSection dataCollection="Person" dataTransform="dataTransform">
+				<ListSection id="peopleSection" dataCollection="Person" dataTransform="dataTransform">
 					<ListItem name:text="{name}" searchableText="{name}"/>
 				</ListSection>
 				<Templates>

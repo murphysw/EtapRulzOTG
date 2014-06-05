@@ -1,6 +1,0 @@
-"/Users/rentexinc/Documents/Titanium_Studio_Workspace/Cornerstone/build/android/gen/com/twinsoft/Cornerstone/ApplicationStylesheet.java"
-"/Users/rentexinc/Documents/Titanium_Studio_Workspace/Cornerstone/build/android/gen/com/twinsoft/Cornerstone/CornerstoneActivity.java"
-"/Users/rentexinc/Documents/Titanium_Studio_Workspace/Cornerstone/build/android/gen/com/twinsoft/Cornerstone/CornerstoneAppInfo.java"
-"/Users/rentexinc/Documents/Titanium_Studio_Workspace/Cornerstone/build/android/gen/com/twinsoft/Cornerstone/CornerstoneApplication.java"
-"/Users/rentexinc/Documents/Titanium_Studio_Workspace/Cornerstone/build/android/gen/com/twinsoft/Cornerstone/Manifest.java"
-"/Users/rentexinc/Documents/Titanium_Studio_Workspace/Cornerstone/build/android/gen/com/twinsoft/Cornerstone/R.java"

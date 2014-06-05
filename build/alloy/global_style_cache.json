@@ -1,1 +1,1 @@
-[{"isApi":true,"priority":1000.0001,"key":"Label","style":{"width":"__ALLOY_EXPR__--Ti.UI.SIZE","height":"__ALLOY_EXPR__--Ti.UI.SIZE","color":"#000","font":{"fontSize":20,"fontFamily":"Helvetica Neue"},"textAlign":"__ALLOY_EXPR__--Ti.UI.TEXT_ALIGNMENT_CENTER"}}]
+[{"isApi":true,"priority":1000.0001,"key":"Label","style":{"width":"__ALLOY_EXPR__--Ti.UI.SIZE","height":"__ALLOY_EXPR__--Ti.UI.SIZE","color":"#000","font":{"fontSize":20,"fontFamily":"Helvetica Neue"},"textAlign":"__ALLOY_EXPR__--Ti.UI.TEXT_ALIGNMENT_LEFT"}}]

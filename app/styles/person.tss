@@ -1,11 +1,30 @@
 "Window": {
 	backgroundColor: "#fff"
 },
-
+"Label": {
+	height:"32dp",
+	width: Ti.UI.SIZE,
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+},
 "#saveContactButton": {
 	top: '5dp',
 	title: "Save Contact"
 }, 
-"#directory": {
-	top: '10dp'
+"#firstNameLabel": {
+	top: '30dp',
+},
+"#lastNameLabel": {
+	top: '50dp',
+},
+"#addressLabel": {
+	top: '70dp',
+},
+"#cityLabel": {
+	top: '90dp',
+},
+"#stateLabel": {
+	top: '110dp',
+},
+"#phoneLabel": {
+	top: '130dp',
 }

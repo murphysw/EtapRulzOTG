@@ -6,12 +6,12 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId20 = [];
-    $.__views.__alloyId21 = Alloy.createController("directory", {
-        id: "__alloyId21",
+    var __alloyId19 = [];
+    $.__views.__alloyId20 = Alloy.createController("directory", {
+        id: "__alloyId20",
         __parentSymbol: __parentSymbol
     });
-    __alloyId20.push($.__views.__alloyId21.getViewEx({
+    __alloyId19.push($.__views.__alloyId20.getViewEx({
         recurse: true
     }));
     $.__views.tab2 = Ti.UI.createWindow({
@@ -24,9 +24,9 @@ function Controller() {
         title: "Calendar",
         icon: "KS_nav_views.png"
     });
-    __alloyId20.push($.__views.calendar);
+    __alloyId19.push($.__views.calendar);
     $.__views.tabGroup = Ti.UI.createTabGroup({
-        tabs: __alloyId20,
+        tabs: __alloyId19,
         id: "tabGroup"
     });
     $.__views.tabGroup && $.addTopLevelView($.__views.tabGroup);
