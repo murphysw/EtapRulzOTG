@@ -1,6 +1,7 @@
 function Controller() {
     function doClickMaps() {
-        Ti.Platform.openURL("geo:0,0?q=440+Bernardo+Ave,+Mountain+View,+CA");
+        var address;
+        Ti.Platform.openURL("geo:0,0?q=" + address);
     }
     function saveContact() {
         Titanium.Contacts.createPerson({

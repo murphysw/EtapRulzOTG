@@ -1,23 +1,24 @@
-"#logincontainer": {
+".logincontainer": {
 	height: Ti.UI.FILL,
 	top: 20,
-	backgroundColor: "#CCC",
-	layout: 'absolute'
+	backgroundColor: "#FFF",
+	layout: 'vertical'
 },
 "#wrapper": {
 	backgroundColor: "#CCC",
 	borderRadius: 8,
-	borderColor: '#000',
-	borderWidth: 2,
-	top: 20
+	top: 20,
+	layout: 'vertical'
 },
 "#wrapper[platform=android]": {
 	width: '75%',
 	height: '50%'
 },
 "TextField": {
-	backgroundColor: "#CCC",
-	left: 10, right: 10,
+	backgroundColor: "#FFF",
+	color: "#FFF",
+	left: 10, 
+	right: 10,
 	height: '40dp',
 	borderColor: '#888',
 	top: 10
@@ -38,4 +39,10 @@
 	left: 10, right: 10,
 	height: '40dp',
 	top: 10
+},
+"#title": {
+	top: 10,
+	font: {
+		
+	}	
 }

@@ -29,8 +29,3 @@ $.submit.addEventListener('click', function() {
 	acs.createUser($.name.value, $.password.value, createCallback);
 });
 
-
-
-
-
-Alloy.Collections.Person.fetch();

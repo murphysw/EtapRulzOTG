@@ -8,31 +8,40 @@ function Controller() {
     var exports = {};
     Alloy.Collections.instance("Person");
     $.__views.logincontainer = Ti.UI.createWindow({
-        backgroundColor: "#CCC",
+        backgroundColor: "#FFF",
         height: Ti.UI.FILL,
         top: 20,
-        layout: "absolute",
+        layout: "vertical",
         id: "logincontainer"
     });
     $.__views.logincontainer && $.addTopLevelView($.__views.logincontainer);
     $.__views.wrapper = Ti.UI.createView({
         backgroundColor: "#CCC",
         borderRadius: 8,
-        borderColor: "#000",
-        borderWidth: 2,
         top: 20,
+        layout: "vertical",
         width: "75%",
         height: "50%",
         id: "wrapper"
     });
     $.__views.logincontainer.add($.__views.wrapper);
-    $.__views.img = Ti.UI.createImageView({
-        image: "/images/login.png",
-        id: "img"
+    $.__views.title = Ti.UI.createLabel({
+        width: Ti.UI.SIZE,
+        height: Ti.UI.SIZE,
+        color: "#000",
+        font: {
+            fontSize: 20,
+            fontFamily: "Helvetica Neue"
+        },
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        ellipsize: "false",
+        text: "Login",
+        id: "title"
     });
-    $.__views.wrapper.add($.__views.img);
+    $.__views.wrapper.add($.__views.title);
     $.__views.name = Ti.UI.createTextField({
-        backgroundColor: "#CCC",
+        backgroundColor: "#FFF",
+        color: "#FFF",
         left: 10,
         right: 10,
         height: "40dp",
@@ -45,7 +54,8 @@ function Controller() {
     });
     $.__views.wrapper.add($.__views.name);
     $.__views.password = Ti.UI.createTextField({
-        backgroundColor: "#CCC",
+        backgroundColor: "#FFF",
+        color: "#FFF",
         left: 10,
         right: 10,
         height: "40dp",
@@ -97,7 +107,6 @@ function Controller() {
         $.submit.title = "Working ...";
         acs.createUser($.name.value, $.password.value, createCallback);
     });
-    Alloy.Collections.Person.fetch();
     _.extend($, exports);
 }
 
