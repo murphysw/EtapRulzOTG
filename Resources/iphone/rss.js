@@ -25,10 +25,10 @@ var parseDate = function(dateString) {
     return MONTH_MAP[dateParts[2].toUpperCase()] + "/" + dateParts[1] + " " + timeParts[0] + ":" + timeParts[1];
 };
 
-exports.loadRssFeed = function(o, tries) {
+exports.loadRssFeed = function(url, o, tries) {
     var xhr = Titanium.Network.createHTTPClient();
     tries = tries || 0;
-    xhr.open("GET", RSS_URL);
+    xhr.open("GET", url);
     xhr.onload = function() {
         var xml = this.responseXML;
         if (null === xml || null === xml.documentElement) {
@@ -55,7 +55,8 @@ exports.loadRssFeed = function(o, tries) {
                 title: getRssText(item, "title"),
                 link: getRssText(item, "link"),
                 pubDate: parseDate(getRssText(item, "pubDate")),
-                image: image
+                image: image,
+                description: getRssText(item, "description")
             });
         }
         o.success && o.success(data);

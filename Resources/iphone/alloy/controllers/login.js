@@ -93,11 +93,6 @@ function Controller() {
         $.submit.title = "Working ...";
         acs.createUser($.name.value, $.password.value, createCallback);
     });
-    if (acs.isLoggedIn()) $.logincontainer.open(); else {
-        var controller = Alloy.createController("main", {});
-        $.logincontainer.hide();
-        $.logincontainer.open(controller.getView());
-    }
     Alloy.Collections.Person.fetch();
     _.extend($, exports);
 }

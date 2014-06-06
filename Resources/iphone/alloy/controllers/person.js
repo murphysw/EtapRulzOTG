@@ -1,4 +1,8 @@
 function Controller() {
+    function doClickMaps() {
+        var encoded = Ti.Network.encodeURIComponent($.personDetail.get("address1") + " " + $.personDetail.get("address2"));
+        Ti.Platform.openURL("maps://maps.google.com/maps?q=" + encoded);
+    }
     function saveContact() {
         Titanium.Contacts.createPerson({
             firstName: $.personDetail.get("FirstName"),
@@ -136,6 +140,12 @@ function Controller() {
     var args = arguments[0] || {};
     $.personDetail.set(args.data.attributes);
     $.parent = args.parent;
+    $.address1Label.addEventListener("click", function(e) {
+        doClickMaps(e);
+    });
+    $.address2Label.addEventListener("click", function(e) {
+        doClickMaps(e);
+    });
     $.saveContactButton.addEventListener("click", function() {
         Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_AUTHORIZED ? saveContact() : Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_UNKNOWN && Ti.Contacts.requestAuthorization(function(e) {
             e.success && saveContact();

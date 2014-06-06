@@ -5,13 +5,20 @@ var args = arguments[0] || {};
 var person;
 var contact;
 
-function dataTransform(person) {
-	//person.set("name", person.get("FirstName") + " " +  person.get("LastName"));
-	return person;
-};
-
 $.personDetail.set(args.data.attributes);
 $.parent = args.parent;
+
+function doClickMaps(e) {  
+	if(OS_IOS) {
+		var address = Ti.Network.encodeURIComponent($.personDetail.get("address1") + " " + $.personDetail.get("address2"));
+	    Ti.Platform.openURL('maps://maps.google.com/maps?q=' + address);
+	} else {
+		Ti.Platform.openURL('geo:0,0?q=' + address);
+	}
+}
+
+$.address1Label.addEventListener('click', function(e) { doClickMaps(e); });
+$.address2Label.addEventListener('click', function(e) { doClickMaps(e); });
 
 $.saveContactButton.addEventListener("click", function() {
 	

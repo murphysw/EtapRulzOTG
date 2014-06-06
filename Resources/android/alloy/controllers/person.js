@@ -1,4 +1,7 @@
 function Controller() {
+    function doClickMaps() {
+        Ti.Platform.openURL("geo:0,0?q=440+Bernardo+Ave,+Mountain+View,+CA");
+    }
     function saveContact() {
         Titanium.Contacts.createPerson({
             firstName: $.personDetail.get("FirstName"),
@@ -136,6 +139,12 @@ function Controller() {
     var args = arguments[0] || {};
     $.personDetail.set(args.data.attributes);
     $.parent = args.parent;
+    $.address1Label.addEventListener("click", function(e) {
+        doClickMaps(e);
+    });
+    $.address2Label.addEventListener("click", function(e) {
+        doClickMaps(e);
+    });
     $.saveContactButton.addEventListener("click", function() {
         Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_AUTHORIZED ? saveContact() : Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_UNKNOWN && Ti.Contacts.requestAuthorization(function(e) {
             e.success && saveContact();
