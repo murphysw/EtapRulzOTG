@@ -1,0 +1,6 @@
+<Alloy>
+	<Tab id="calendar" title="Calendar" icon="KS_nav_views.png">
+		<Window id="nursery" title="Nursery">
+		</Window>
+	</Tab>
+</Alloy>

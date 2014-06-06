@@ -1,0 +1,10 @@
+<Alloy>
+	<Tab id="homeTab" title="Verse">
+		<Window id="rssWindow" title="Verse of the Day">
+			<ImageView id="image"/>
+			<Label id="date"/>
+			<Label id="title"/>
+			<Label id="description" />
+		</Window>
+	</Tab>
+</Alloy>

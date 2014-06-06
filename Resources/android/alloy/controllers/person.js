@@ -28,126 +28,109 @@ function Controller() {
     $.personDetail = Alloy.createModel("Person");
     $.__views.detailWindow = Ti.UI.createWindow({
         backgroundColor: "#fff",
+        layout: "vertical",
         id: "detailWindow",
         model: "$.personDetail",
         dataTransform: "dataTransformation"
     });
     $.__views.detailWindow && $.addTopLevelView($.__views.detailWindow);
-    $.__views.firstNameLabel = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: "32dp",
+    $.__views.accountImage = Ti.UI.createImageView({
+        width: "15%",
+        id: "accountImage"
+    });
+    $.__views.detailWindow.add($.__views.accountImage);
+    $.__views.nameLabel = Ti.UI.createLabel({
+        width: "80%",
+        height: Ti.UI.SIZE,
         color: "#000",
         font: {
             fontSize: 20,
             fontFamily: "Helvetica Neue"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        top: "30dp",
-        id: "firstNameLabel"
+        ellipsize: "false",
+        left: "10dp",
+        id: "nameLabel"
     });
-    $.__views.detailWindow.add($.__views.firstNameLabel);
-    $.__views.lastNameLabel = Ti.UI.createLabel({
+    $.__views.detailWindow.add($.__views.nameLabel);
+    $.__views.address1Label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: "32dp",
+        height: Ti.UI.SIZE,
         color: "#000",
         font: {
             fontSize: 20,
             fontFamily: "Helvetica Neue"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        top: "50dp",
-        id: "lastNameLabel"
+        ellipsize: "false",
+        left: "10dp",
+        id: "address1Label"
     });
-    $.__views.detailWindow.add($.__views.lastNameLabel);
-    $.__views.addressLabel = Ti.UI.createLabel({
+    $.__views.detailWindow.add($.__views.address1Label);
+    $.__views.address2Label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: "32dp",
+        height: Ti.UI.SIZE,
         color: "#000",
         font: {
             fontSize: 20,
             fontFamily: "Helvetica Neue"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        top: "70dp",
-        id: "addressLabel"
+        ellipsize: "false",
+        left: "10dp",
+        id: "address2Label"
     });
-    $.__views.detailWindow.add($.__views.addressLabel);
-    $.__views.cityLabel = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: "32dp",
-        color: "#000",
-        font: {
-            fontSize: 20,
-            fontFamily: "Helvetica Neue"
-        },
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        top: "90dp",
-        id: "cityLabel"
-    });
-    $.__views.detailWindow.add($.__views.cityLabel);
-    $.__views.stateLabel = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: "32dp",
-        color: "#000",
-        font: {
-            fontSize: 20,
-            fontFamily: "Helvetica Neue"
-        },
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        top: "110dp",
-        id: "stateLabel"
-    });
-    $.__views.detailWindow.add($.__views.stateLabel);
+    $.__views.detailWindow.add($.__views.address2Label);
     $.__views.phoneLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: "32dp",
+        height: Ti.UI.SIZE,
         color: "#000",
         font: {
             fontSize: 20,
             fontFamily: "Helvetica Neue"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        top: "130dp",
+        ellipsize: "false",
+        left: "10dp",
         id: "phoneLabel"
     });
     $.__views.detailWindow.add($.__views.phoneLabel);
     $.__views.emailLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: "32dp",
+        height: Ti.UI.SIZE,
         color: "#000",
         font: {
             fontSize: 20,
             fontFamily: "Helvetica Neue"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        ellipsize: "false",
+        left: "10dp",
         id: "emailLabel"
     });
     $.__views.detailWindow.add($.__views.emailLabel);
     $.__views.saveContactButton = Ti.UI.createButton({
-        top: "5dp",
         title: "Save Contact",
         id: "saveContactButton"
     });
     $.__views.detailWindow.add($.__views.saveContactButton);
-    var __alloyId21 = function() {
-        $.firstNameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["FirstName"] : $.personDetail.get("FirstName");
-        $.firstNameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["FirstName"] : $.personDetail.get("FirstName");
-        $.lastNameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["LastName"] : $.personDetail.get("LastName");
-        $.lastNameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["LastName"] : $.personDetail.get("LastName");
-        $.addressLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["AddressStreet"] : $.personDetail.get("AddressStreet");
-        $.addressLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["AddressStreet"] : $.personDetail.get("AddressStreet");
-        $.cityLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["AddressCity"] : $.personDetail.get("AddressCity");
-        $.cityLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["AddressCity"] : $.personDetail.get("AddressCity");
-        $.stateLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["AddressState"] : $.personDetail.get("AddressState");
-        $.stateLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["AddressState"] : $.personDetail.get("AddressState");
+    var __alloyId24 = function() {
+        $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
+        $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
+        $.nameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["name"] : $.personDetail.get("name");
+        $.nameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["name"] : $.personDetail.get("name");
+        $.address1Label.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["address1"] : $.personDetail.get("address1");
+        $.address1Label.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["address1"] : $.personDetail.get("address1");
+        $.address2Label.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["address2"] : $.personDetail.get("address2");
+        $.address2Label.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["address2"] : $.personDetail.get("address2");
         $.phoneLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Phone"] : $.personDetail.get("Phone");
         $.phoneLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Phone"] : $.personDetail.get("Phone");
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
     };
-    $.personDetail.on("fetch change destroy", __alloyId21);
+    $.personDetail.on("fetch change destroy", __alloyId24);
     exports.destroy = function() {
-        $.personDetail.off("fetch change destroy", __alloyId21);
+        $.personDetail.off("fetch change destroy", __alloyId24);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};

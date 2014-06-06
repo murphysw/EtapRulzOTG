@@ -1,3 +1,6 @@
+"Window": {
+	backgroundColor: "transparent"
+},
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
@@ -6,6 +9,7 @@
 		fontSize: 20,
 		fontFamily: 'Helvetica Neue'
 	},
-	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	ellipsize: 'false'
 	
 }

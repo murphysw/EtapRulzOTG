@@ -21,4 +21,3 @@ else
 	$.tabGroup.open();
 }
 
-Alloy.Collections.Person.fetch();

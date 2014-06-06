@@ -1,5 +1,4 @@
 <Alloy>
-	<Window id="index">
-		
-	</Window>
+	<Collection src="Person" />
+	<Window></Window>
 </Alloy>

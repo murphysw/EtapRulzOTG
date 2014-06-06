@@ -1,30 +1,26 @@
 "Window": {
-	backgroundColor: "#fff"
+	backgroundColor: "#fff",
+	layout: 'vertical'
 },
 "Label": {
-	height:"32dp",
 	width: Ti.UI.SIZE,
-	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT
+	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+	left: "10dp",
+	ellipsize: 'false'
+},
+"#accountImage": { 
+	width: '15%',
+	image: '{$.personDetail.url}'
 },
 "#saveContactButton": {
-	top: '5dp',
 	title: "Save Contact"
-}, 
-"#firstNameLabel": {
-	top: '30dp',
 },
-"#lastNameLabel": {
-	top: '50dp',
+"#nameLabel": {
+	width: '80%'
 },
-"#addressLabel": {
-	top: '70dp',
+"#address1Label": {
 },
-"#cityLabel": {
-	top: '90dp',
-},
-"#stateLabel": {
-	top: '110dp',
+"#address2Label": {
 },
 "#phoneLabel": {
-	top: '130dp',
 }

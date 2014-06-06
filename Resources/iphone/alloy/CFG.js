@@ -1,1 +1,1 @@
-module.exports={"dependencies":{}};
+module.exports={"dependencies":{"rss":"1.0"}};

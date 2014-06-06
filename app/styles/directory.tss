@@ -7,7 +7,8 @@
 ".row": {
 	height: "40dp",
 	backgroundColor: "#444",
-	border: 0
+	border: 0,
+	hasChild: true
 },
 "Label": {
 	width: Ti.UI.SIZE,
@@ -24,11 +25,10 @@
 	left: "10dp"
 },
 "#wrapper": {
-	backgroundColor: "#f5f5f5",
-	borderRadius: 3,
-	borderColor: '#DDD',
+	backgroundColor: "#f4f4f4",
+	borderRadius: 2,
 	width: "90%",
 	height: "32dp",
-	top: "4dp",
+	top: "6dp",
 	layout: 'vertical'
 }

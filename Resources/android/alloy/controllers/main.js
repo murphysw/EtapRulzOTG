@@ -6,27 +6,30 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    var __alloyId19 = [];
-    $.__views.__alloyId20 = Alloy.createController("directory", {
-        id: "__alloyId20",
+    var __alloyId20 = [];
+    $.__views.__alloyId21 = Alloy.createController("directory", {
+        id: "__alloyId21",
         __parentSymbol: __parentSymbol
     });
-    __alloyId19.push($.__views.__alloyId20.getViewEx({
+    __alloyId20.push($.__views.__alloyId21.getViewEx({
         recurse: true
     }));
-    $.__views.tab2 = Ti.UI.createWindow({
-        id: "tab2",
-        title: "Tab 2"
+    $.__views.__alloyId22 = Alloy.createController("home", {
+        id: "__alloyId22",
+        __parentSymbol: __parentSymbol
     });
-    $.__views.calendar = Ti.UI.createTab({
-        window: $.__views.tab2,
-        id: "calendar",
-        title: "Calendar",
-        icon: "KS_nav_views.png"
+    __alloyId20.push($.__views.__alloyId22.getViewEx({
+        recurse: true
+    }));
+    $.__views.__alloyId23 = Alloy.createController("nursery", {
+        id: "__alloyId23",
+        __parentSymbol: __parentSymbol
     });
-    __alloyId19.push($.__views.calendar);
+    __alloyId20.push($.__views.__alloyId23.getViewEx({
+        recurse: true
+    }));
     $.__views.tabGroup = Ti.UI.createTabGroup({
-        tabs: __alloyId19,
+        tabs: __alloyId20,
         id: "tabGroup"
     });
     $.__views.tabGroup && $.addTopLevelView($.__views.tabGroup);
@@ -49,7 +52,6 @@ function Controller() {
         client.open("GET", url);
         client.send();
     }
-    Alloy.Collections.Person.fetch();
     _.extend($, exports);
 }
 

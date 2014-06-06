@@ -6,43 +6,46 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.logincontainer = Ti.UI.createView({
-        backgroundColor: "rgba(0,0,0,0.7)",
+    Alloy.Collections.instance("Person");
+    $.__views.logincontainer = Ti.UI.createWindow({
+        backgroundColor: "#CCC",
+        height: Ti.UI.FILL,
+        top: 20,
+        layout: "absolute",
         id: "logincontainer"
     });
     $.__views.logincontainer && $.addTopLevelView($.__views.logincontainer);
     $.__views.wrapper = Ti.UI.createView({
-        backgroundColor: "#fff",
+        backgroundColor: "#CCC",
         borderRadius: 8,
         borderColor: "#000",
         borderWidth: 2,
+        top: 20,
         width: "75%",
         height: "50%",
-        top: 20,
-        layout: "vertical",
         id: "wrapper"
     });
     $.__views.logincontainer.add($.__views.wrapper);
     $.__views.img = Ti.UI.createImageView({
-        top: 10,
-        width: 100,
         image: "/images/login.png",
         id: "img"
     });
     $.__views.wrapper.add($.__views.img);
     $.__views.name = Ti.UI.createTextField({
-        backgroundColor: "#fff",
+        backgroundColor: "#CCC",
         left: 10,
         right: 10,
         height: "40dp",
         borderColor: "#888",
         top: 30,
+        autocorrection: false,
+        autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
         id: "name",
         hintText: "username"
     });
     $.__views.wrapper.add($.__views.name);
     $.__views.password = Ti.UI.createTextField({
-        backgroundColor: "#fff",
+        backgroundColor: "#CCC",
         left: 10,
         right: 10,
         height: "40dp",
@@ -70,6 +73,9 @@ function Controller() {
     var acs = require("acs");
     acs.isLoggedIn(function() {
         $.logincontainer.hide();
+        $.parent.close();
+        var mainController = Alloy.createController("main");
+        $.parent.open(mainController.getView());
         Ti.UI.Android.hideSoftKeyboard();
     });
     var createCallback = function(user) {
@@ -91,6 +97,7 @@ function Controller() {
         $.submit.title = "Working ...";
         acs.createUser($.name.value, $.password.value, createCallback);
     });
+    Alloy.Collections.Person.fetch();
     _.extend($, exports);
 }
 

@@ -6,16 +6,14 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "#fff",
+    Alloy.Collections.instance("Person");
+    $.__views.index = Alloy.createController("login", {
         id: "index"
     });
     $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var acs = require("acs");
-    var controller = Alloy.createController(acs.isLoggedIn() ? "main" : "login");
-    $.index.open(controller.getView());
+    require("acs");
     _.extend($, exports);
 }
 

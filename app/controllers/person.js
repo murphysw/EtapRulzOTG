@@ -5,21 +5,10 @@ var args = arguments[0] || {};
 var person;
 var contact;
 
-/**
- * being used for rendering the model in the view
- * via data-binding
- *
- * @param {Object} _model
- */
-function dataTransformation(_model) {
-
-    // toggle the capture button
-    $.capture_button.visible = !_model.attributes.captured;
-
-    return {
-        name : _model.attributes.FirstName,
-    };
-}
+function dataTransform(person) {
+	//person.set("name", person.get("FirstName") + " " +  person.get("LastName"));
+	return person;
+};
 
 $.personDetail.set(args.data.attributes);
 $.parent = args.parent;

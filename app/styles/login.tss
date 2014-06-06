@@ -1,33 +1,31 @@
-".logincontainer": {
-	backgroundColor: 'rgba(0,0,0,0.7)'
+"#logincontainer": {
+	height: Ti.UI.FILL,
+	top: 20,
+	backgroundColor: "#CCC",
+	layout: 'absolute'
 },
 "#wrapper": {
-	backgroundColor: "#fff",
+	backgroundColor: "#CCC",
 	borderRadius: 8,
 	borderColor: '#000',
 	borderWidth: 2,
-	width: 300,
-	height: 300,
-	top: 20,
-	layout: 'vertical'
+	top: 20
 },
 "#wrapper[platform=android]": {
 	width: '75%',
 	height: '50%'
 },
-"#img": {
-	top: 10,
-	width:100
-},
 "TextField": {
-	backgroundColor: "#fff",
+	backgroundColor: "#CCC",
 	left: 10, right: 10,
 	height: '40dp',
 	borderColor: '#888',
 	top: 10
 },
 "#name": {
-	top: 30
+	top: 30,
+	autocorrection: false,
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
 },
 "#password": {
 	passwordMask: true,

@@ -2,6 +2,9 @@ var acs = require('acs');
 
 acs.isLoggedIn(function(){
     $.logincontainer.hide();
+    $.parent.close();
+		var mainController = Alloy.createController('main');
+    	$.parent.open(mainController.getView());
     if(OS_ANDROID) Ti.UI.Android.hideSoftKeyboard();
 });
 
@@ -25,3 +28,9 @@ $.submit.addEventListener('click', function() {
 	$.submit.title = 'Working ...';
 	acs.createUser($.name.value, $.password.value, createCallback);
 });
+
+
+
+
+
+Alloy.Collections.Person.fetch();

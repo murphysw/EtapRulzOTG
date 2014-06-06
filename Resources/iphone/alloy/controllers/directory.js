@@ -1,27 +1,31 @@
 function Controller() {
-    function __alloyId16(e) {
+    function __alloyId14(e) {
         if (e && e.fromAdapter) return;
-        var opts = __alloyId16.opts || {};
-        var models = __alloyId15.models;
+        var opts = __alloyId14.opts || {};
+        var models = __alloyId13.models;
         var len = models.length;
-        var __alloyId11 = [];
+        var __alloyId9 = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId12 = models[i];
-            __alloyId12.__transform = dataTransform(__alloyId12);
-            var __alloyId14 = {
+            var __alloyId10 = models[i];
+            __alloyId10.__transform = dataTransform(__alloyId10);
+            var __alloyId12 = {
                 name: {
-                    text: "undefined" != typeof __alloyId12.__transform["name"] ? __alloyId12.__transform["name"] : __alloyId12.get("name")
+                    text: "undefined" != typeof __alloyId10.__transform["name"] ? __alloyId10.__transform["name"] : __alloyId10.get("name")
                 },
                 properties: {
-                    searchableText: "undefined" != typeof __alloyId12.__transform["name"] ? __alloyId12.__transform["name"] : __alloyId12.get("name")
+                    searchableText: "undefined" != typeof __alloyId10.__transform["name"] ? __alloyId10.__transform["name"] : __alloyId10.get("name"),
+                    accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
                 }
             };
-            __alloyId11.push(__alloyId14);
+            __alloyId9.push(__alloyId12);
         }
-        opts.animation ? $.__views.peopleSection.setItems(__alloyId11, opts.animation) : $.__views.peopleSection.setItems(__alloyId11);
+        opts.animation ? $.__views.peopleSection.setItems(__alloyId9, opts.animation) : $.__views.peopleSection.setItems(__alloyId9);
     }
     function dataTransform(person) {
         person.set("name", person.get("FirstName") + " " + person.get("LastName"));
+        person.set("address1", person.get("AddressStreet"));
+        person.set("address2", person.get("AddressCity") + ", " + person.get("AddressState") + " " + person.get("AddressZip"));
+        person.set("url", "http://cornerstoneofgreenwood.com/app/images/profiles/" + person.get("ImageUrl"));
         return person;
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -31,23 +35,22 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    Alloy.Collections.instance("Person");
     $.__views.directoryWindow = Ti.UI.createWindow({
         backgroundColor: "transparent",
         id: "directoryWindow",
         title: "Directory"
     });
-    $.__views.__alloyId2 = Ti.UI.createSearchBar({
+    $.__views.__alloyId0 = Ti.UI.createSearchBar({
         barColor: "#333",
-        id: "__alloyId2"
+        id: "__alloyId0"
     });
-    var __alloyId3 = {};
-    var __alloyId6 = [];
-    var __alloyId7 = {
+    var __alloyId1 = {};
+    var __alloyId4 = [];
+    var __alloyId5 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId8 = [];
-            var __alloyId10 = {
+            var __alloyId6 = [];
+            var __alloyId8 = {
                 type: "Ti.UI.Label",
                 bindId: "name",
                 properties: {
@@ -59,6 +62,7 @@ function Controller() {
                         fontFamily: "Helvetica Neue"
                     },
                     textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+                    ellipsize: "false",
                     borderRadius: "5dp",
                     backgroundPaddingBottom: "5dp",
                     backgroundPaddingTop: "5dp",
@@ -66,40 +70,40 @@ function Controller() {
                     bindId: "name"
                 }
             };
-            __alloyId8.push(__alloyId10);
-            return __alloyId8;
+            __alloyId6.push(__alloyId8);
+            return __alloyId6;
         }(),
         properties: {
             height: "32dp",
-            backgroundColor: "#f5f5f5",
+            backgroundColor: "#f4f4f4",
             border: 0,
-            borderRadius: 3,
-            borderColor: "#DDD",
+            hasChild: true,
+            borderRadius: 2,
             width: "90%",
-            top: "4dp",
+            top: "6dp",
             layout: "vertical"
         }
     };
-    __alloyId6.push(__alloyId7);
-    var __alloyId5 = {
+    __alloyId4.push(__alloyId5);
+    var __alloyId3 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId6
+        childTemplates: __alloyId4
     };
-    __alloyId3["template"] = __alloyId5;
+    __alloyId1["template"] = __alloyId3;
     $.__views.peopleSection = Ti.UI.createListSection({
         id: "peopleSection"
     });
-    var __alloyId15 = Alloy.Collections["Person"] || Person;
-    __alloyId15.on("fetch destroy change add remove reset", __alloyId16);
-    var __alloyId17 = [];
-    __alloyId17.push($.__views.peopleSection);
+    var __alloyId13 = Alloy.Collections["Person"] || Person;
+    __alloyId13.on("fetch destroy change add remove reset", __alloyId14);
+    var __alloyId15 = [];
+    __alloyId15.push($.__views.peopleSection);
     $.__views.directoryList = Ti.UI.createListView({
         backgroundColor: "#333",
-        sections: __alloyId17,
-        templates: __alloyId3,
-        searchView: $.__views.__alloyId2,
+        sections: __alloyId15,
+        templates: __alloyId1,
+        searchView: $.__views.__alloyId0,
         id: "directoryList",
         defaultItemTemplate: "template"
     });
@@ -112,10 +116,10 @@ function Controller() {
     });
     $.__views.directoryTab && $.addTopLevelView($.__views.directoryTab);
     exports.destroy = function() {
-        __alloyId15.off("fetch destroy change add remove reset", __alloyId16);
+        __alloyId13.off("fetch destroy change add remove reset", __alloyId14);
     };
     _.extend($, $.__views);
-    Alloy.Collections.Person;
+    var peopleCollection = Alloy.Collections.Person;
     $.directoryList.addEventListener("itemclick", function(_e) {
         var detailController = Alloy.createController("person", {
             parentTab: $.directoryTab,
@@ -123,6 +127,7 @@ function Controller() {
         });
         $.directoryTab.open(detailController.getView());
     });
+    peopleCollection.fetch();
     _.extend($, exports);
 }
 
