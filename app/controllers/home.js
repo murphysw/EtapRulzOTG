@@ -7,7 +7,6 @@ function refreshRss(url) {
 	rss.loadRssFeed(url, {
 		success: function(data) {
 			var item = data[0];
-			$.image.image = item.image;
 			$.date.text = item.date;
 			$.title.text = item.title;
 			$.description.text = item.description;

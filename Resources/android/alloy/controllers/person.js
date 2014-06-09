@@ -49,7 +49,8 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: 20,
-            fontFamily: "Helvetica Neue"
+            fontFamily: "HelveticaNeueLight",
+            fontWeight: 200
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
@@ -63,7 +64,8 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: 20,
-            fontFamily: "Helvetica Neue"
+            fontFamily: "HelveticaNeueLight",
+            fontWeight: 200
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
@@ -77,7 +79,8 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: 20,
-            fontFamily: "Helvetica Neue"
+            fontFamily: "HelveticaNeueLight",
+            fontWeight: 200
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
@@ -91,7 +94,8 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: 20,
-            fontFamily: "Helvetica Neue"
+            fontFamily: "HelveticaNeueLight",
+            fontWeight: 200
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
@@ -105,7 +109,8 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: 20,
-            fontFamily: "Helvetica Neue"
+            fontFamily: "HelveticaNeueLight",
+            fontWeight: 200
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",

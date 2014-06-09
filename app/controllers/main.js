@@ -1,5 +1,5 @@
 if (!Ti.App.Properties.hasProperty('seeded')) {
-	var url = "http://www.cornerstoneofgreenwood.com/utils/test.php";
+	var url = "http://www.cornerstoneofgreenwood.com/app/php/directoryquery.php";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);

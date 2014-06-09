@@ -7,16 +7,10 @@ function Controller() {
     var $ = this;
     var exports = {};
     Alloy.Collections.instance("Person");
-    $.__views.index = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        id: "index"
-    });
-    $.__views.index && $.addTopLevelView($.__views.index);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var acs = require("acs");
-    var controller = Alloy.createController(acs.isLoggedIn() ? "login" : "main");
-    $.index.open(controller);
+    Alloy.createController(acs.isLoggedIn() ? "login" : "main").getView().open();
     _.extend($, exports);
 }
 

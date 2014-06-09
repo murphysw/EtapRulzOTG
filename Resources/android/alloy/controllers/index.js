@@ -10,7 +10,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var acs = require("acs");
-    Alloy.createController(acs.isLoggedIn() ? "main" : "login").getView().open();
+    Alloy.createController(acs.isLoggedIn() ? "login" : "main").getView().open();
     _.extend($, exports);
 }
 

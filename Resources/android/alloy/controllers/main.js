@@ -36,7 +36,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     if (Ti.App.Properties.hasProperty("seeded")) $.tabGroup.open(); else {
-        var url = "http://www.cornerstoneofgreenwood.com/utils/test.php";
+        var url = "http://www.cornerstoneofgreenwood.com/app/php/directoryquery.php";
         var client = Ti.Network.createHTTPClient({
             onload: function() {
                 Ti.API.info("Received text: " + this.responseText);

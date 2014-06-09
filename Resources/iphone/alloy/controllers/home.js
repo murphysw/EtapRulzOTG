@@ -3,7 +3,6 @@ function Controller() {
         rss.loadRssFeed(url, {
             success: function(data) {
                 var item = data[0];
-                $.image.image = item.image;
                 $.date.text = item.date;
                 $.title.text = item.title;
                 $.description.text = item.description;
@@ -20,29 +19,24 @@ function Controller() {
     $.__views.rssWindow = Ti.UI.createWindow({
         backgroundColor: "#FFF",
         layout: "vertical",
+        top: "10dp",
+        left: "10dp",
+        right: "10dp",
+        height: "200dp",
         id: "rssWindow",
         title: "Verse of the Day"
     });
-    $.__views.image = Ti.UI.createImageView({
-        height: "42dp",
-        width: "68dp",
-        left: "5dp",
-        top: "3dp",
-        id: "image"
-    });
-    $.__views.rssWindow.add($.__views.image);
     $.__views.date = Ti.UI.createLabel({
-        width: "68dp",
+        width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
-        color: "#444",
+        color: "#000",
         font: {
-            fontSize: "12dp"
+            fontSize: 20,
+            fontFamily: "HelveticaNeueLight",
+            fontWeight: 200
         },
-        textAlign: "center",
+        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
-        left: "5dp",
-        bottom: "3dp",
-        touchEnabled: false,
         id: "date"
     });
     $.__views.rssWindow.add($.__views.date);
@@ -51,14 +45,13 @@ function Controller() {
         height: "20dp",
         color: "#000",
         font: {
-            fontSize: "16dp"
+            fontSize: "25dp",
+            fontFamily: "HelveticaNeue-Light"
         },
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
+        textAlign: "left",
         ellipsize: "false",
-        left: "83dp",
-        right: "3dp",
         top: "10dp",
-        touchEnabled: false,
+        left: "20dp",
         id: "title"
     });
     $.__views.rssWindow.add($.__views.title);
@@ -68,15 +61,18 @@ function Controller() {
         color: "#000",
         font: {
             fontSize: 20,
-            fontFamily: "Helvetica Neue"
+            fontFamily: "HelveticaNeue-Light"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
-        top: "10dp",
+        top: "20dp",
+        left: "20dp",
+        right: "20dp",
         id: "description"
     });
     $.__views.rssWindow.add($.__views.description);
     $.__views.homeTab = Ti.UI.createTab({
+        backgroundColor: "#E3EFC2",
         window: $.__views.rssWindow,
         id: "homeTab",
         title: "Verse"

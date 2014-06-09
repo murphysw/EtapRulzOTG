@@ -59,7 +59,8 @@ function Controller() {
                     color: "#000",
                     font: {
                         fontSize: 20,
-                        fontFamily: "Helvetica Neue"
+                        fontFamily: "Helvetica Neue",
+                        fontWeight: 200
                     },
                     textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
                     ellipsize: "false",

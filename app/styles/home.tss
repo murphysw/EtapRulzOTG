@@ -2,38 +2,34 @@
 ".container" : {
   
 },
+"#homeTab" : {
+	backgroundColor: "#E3EFC2"
+},
 "#rssWindow": {
 	backgroundColor: "#FFF",
-	layout: 'vertical'
-},
-"#image": {
-    height: '42dp',
-    width: '68dp',
-    left: '5dp',
-    top: '3dp',
+	layout: 'vertical',
+	top: "10dp",
+	left: "10dp",
+	right: "10dp",
+	height: "200dp"
 },
 "#title": {
     height: '20dp',
     font: {
-        fontSize: '16dp'
-    },
-    left: '83dp',
-    right: '3dp',
+		fontSize: '25dp',
+		fontFamily: 'HelveticaNeue-Light'
+	},
+	width: Ti.UI.SIZE,
     top: '10dp',
-    touchEnabled: false
-},
-"#date": {
-    height: Ti.UI.SIZE,
-    width: '68dp',
-    left: '5dp',
-    bottom: '3dp',
-    color: '#444',
-    font: {
-        fontSize: '12dp'
-    },
-    textAlign: 'center',
-    touchEnabled: false
-},
+    left: '20dp',
+    textAlign: 'left'
+}
 "#description": {
-	top: '10dp'
+	top: '20dp',
+	left: '20dp',
+	right: '20dp',
+	font: {
+		fontSize: 20,
+		fontFamily: 'HelveticaNeue-Light'
+	}
 }
