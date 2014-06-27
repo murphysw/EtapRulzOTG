@@ -1,25 +1,25 @@
 function Controller() {
-    function __alloyId14(e) {
+    function __alloyId15(e) {
         if (e && e.fromAdapter) return;
-        var opts = __alloyId14.opts || {};
-        var models = __alloyId13.models;
+        var opts = __alloyId15.opts || {};
+        var models = __alloyId14.models;
         var len = models.length;
-        var __alloyId9 = [];
+        var __alloyId10 = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId10 = models[i];
-            __alloyId10.__transform = dataTransform(__alloyId10);
-            var __alloyId12 = {
+            var __alloyId11 = models[i];
+            __alloyId11.__transform = dataTransform(__alloyId11);
+            var __alloyId13 = {
                 name: {
-                    text: "undefined" != typeof __alloyId10.__transform["name"] ? __alloyId10.__transform["name"] : __alloyId10.get("name")
+                    text: "undefined" != typeof __alloyId11.__transform["name"] ? __alloyId11.__transform["name"] : __alloyId11.get("name")
                 },
                 properties: {
-                    searchableText: "undefined" != typeof __alloyId10.__transform["name"] ? __alloyId10.__transform["name"] : __alloyId10.get("name"),
+                    searchableText: "undefined" != typeof __alloyId11.__transform["name"] ? __alloyId11.__transform["name"] : __alloyId11.get("name"),
                     accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
                 }
             };
-            __alloyId9.push(__alloyId12);
+            __alloyId10.push(__alloyId13);
         }
-        opts.animation ? $.__views.peopleSection.setItems(__alloyId9, opts.animation) : $.__views.peopleSection.setItems(__alloyId9);
+        opts.animation ? $.__views.peopleSection.setItems(__alloyId10, opts.animation) : $.__views.peopleSection.setItems(__alloyId10);
     }
     function dataTransform(person) {
         person.set("name", person.get("FirstName") + " " + person.get("LastName"));
@@ -72,6 +72,13 @@ function Controller() {
                 }
             };
             __alloyId6.push(__alloyId8);
+            var __alloyId9 = {
+                type: "Ti.UI.ImageView",
+                properties: {
+                    image: "/KS_nav"
+                }
+            };
+            __alloyId6.push(__alloyId9);
             return __alloyId6;
         }(),
         properties: {
@@ -96,13 +103,13 @@ function Controller() {
     $.__views.peopleSection = Ti.UI.createListSection({
         id: "peopleSection"
     });
-    var __alloyId13 = Alloy.Collections["Person"] || Person;
-    __alloyId13.on("fetch destroy change add remove reset", __alloyId14);
-    var __alloyId15 = [];
-    __alloyId15.push($.__views.peopleSection);
+    var __alloyId14 = Alloy.Collections["Person"] || Person;
+    __alloyId14.on("fetch destroy change add remove reset", __alloyId15);
+    var __alloyId16 = [];
+    __alloyId16.push($.__views.peopleSection);
     $.__views.directoryList = Ti.UI.createListView({
         backgroundColor: "#333",
-        sections: __alloyId15,
+        sections: __alloyId16,
         templates: __alloyId1,
         searchView: $.__views.__alloyId0,
         id: "directoryList",
@@ -117,7 +124,7 @@ function Controller() {
     });
     $.__views.directoryTab && $.addTopLevelView($.__views.directoryTab);
     exports.destroy = function() {
-        __alloyId13.off("fetch destroy change add remove reset", __alloyId14);
+        __alloyId14.off("fetch destroy change add remove reset", __alloyId15);
     };
     _.extend($, $.__views);
     var peopleCollection = Alloy.Collections.Person;

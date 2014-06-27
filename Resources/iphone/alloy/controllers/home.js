@@ -3,7 +3,6 @@ function Controller() {
         rss.loadRssFeed(url, {
             success: function(data) {
                 var item = data[0];
-                $.date.text = item.date;
                 $.title.text = item.title;
                 $.description.text = item.description;
             }
@@ -16,30 +15,22 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.rssWindow = Ti.UI.createWindow({
+    $.__views.homeView = Ti.UI.createWindow({
+        backgroundColor: "#555",
+        id: "homeView",
+        title: "Verse Of The Day"
+    });
+    $.__views.rssWindow = Ti.UI.createView({
         backgroundColor: "#FFF",
         layout: "vertical",
         top: "10dp",
         left: "10dp",
         right: "10dp",
-        height: "200dp",
+        height: "400dp",
         id: "rssWindow",
         title: "Verse of the Day"
     });
-    $.__views.date = Ti.UI.createLabel({
-        width: Ti.UI.SIZE,
-        height: Ti.UI.SIZE,
-        color: "#000",
-        font: {
-            fontSize: 20,
-            fontFamily: "HelveticaNeueLight",
-            fontWeight: 200
-        },
-        textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-        ellipsize: "false",
-        id: "date"
-    });
-    $.__views.rssWindow.add($.__views.date);
+    $.__views.homeView.add($.__views.rssWindow);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "20dp",
@@ -72,8 +63,7 @@ function Controller() {
     });
     $.__views.rssWindow.add($.__views.description);
     $.__views.homeTab = Ti.UI.createTab({
-        backgroundColor: "#E3EFC2",
-        window: $.__views.rssWindow,
+        window: $.__views.homeView,
         id: "homeTab",
         title: "Verse"
     });

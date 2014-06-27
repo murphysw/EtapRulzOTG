@@ -123,7 +123,7 @@ function Controller() {
         id: "saveContactButton"
     });
     $.__views.detailWindow.add($.__views.saveContactButton);
-    var __alloyId24 = function() {
+    var __alloyId25 = function() {
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.nameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["name"] : $.personDetail.get("name");
@@ -137,14 +137,14 @@ function Controller() {
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
     };
-    $.personDetail.on("fetch change destroy", __alloyId24);
+    $.personDetail.on("fetch change destroy", __alloyId25);
     exports.destroy = function() {
-        $.personDetail.off("fetch change destroy", __alloyId24);
+        $.personDetail.off("fetch change destroy", __alloyId25);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};
     $.personDetail.set(args.data.attributes);
-    $.parent = args.parent;
+    $.parent = args.parentTab;
     $.address1Label.addEventListener("click", function(e) {
         doClickMaps(e);
     });
