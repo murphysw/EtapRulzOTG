@@ -6,7 +6,7 @@ var person;
 var contact;
 
 $.personDetail.set(args.data.attributes);
-$.parent = args.parent;
+$.parent = args.parentTab;
 
 function doClickMaps(e) {  
 	if(OS_IOS) {

@@ -2,8 +2,8 @@
 ".container" : {
   
 },
-"#homeTab" : {
-	backgroundColor: "#E3EFC2"
+"#homeView" : {
+	backgroundColor: "#555"
 },
 "#rssWindow": {
 	backgroundColor: "#FFF",
@@ -11,7 +11,7 @@
 	top: "10dp",
 	left: "10dp",
 	right: "10dp",
-	height: "200dp"
+	height: "400dp"
 },
 "#title": {
     height: '20dp',

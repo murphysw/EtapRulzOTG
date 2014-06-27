@@ -1,7 +1,7 @@
 <Alloy>
 	<TabGroup id="tabGroup">
-		<Require src="directory"/>
 		<Require src="home"/>
+		<Require src="directory"/>
 		<Require src="nursery"/>
 	</TabGroup>
 </Alloy>

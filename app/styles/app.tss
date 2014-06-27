@@ -11,6 +11,5 @@
 		fontWeight: 200
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	ellipsize: 'false'
-	
+	ellipsize: 'false'	
 }
