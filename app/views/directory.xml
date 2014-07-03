@@ -1,5 +1,5 @@
 <Alloy>
-	<Tab id="directoryTab" title="Directory" icon="KS_nav_ui.png" platform="ios">
+	<Tab id="directoryTab" title="Directory" icon="KS_nav_ui.png">
 		<Window id="directoryWindow" title="Directory">
 			<ListView class="container" id="directoryList" defaultItemTemplate="template">
 				<SearchBar barColor="#333" />

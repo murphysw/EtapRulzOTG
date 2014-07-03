@@ -32,6 +32,7 @@ function Controller() {
         font: {},
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
         top: 10,
         text: "Login",
         id: "title"

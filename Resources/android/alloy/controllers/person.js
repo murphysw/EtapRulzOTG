@@ -1,7 +1,7 @@
 function Controller() {
     function doClickMaps() {
-        var address;
-        Ti.Platform.openURL("geo:0,0?q=" + address);
+        var address = Ti.Network.encodeURIComponent($.personDetail.get("address1") + " " + $.personDetail.get("address2"));
+        Ti.Platform.openURL("http://maps.google.com/maps?q=" + address);
     }
     function saveContact() {
         Titanium.Contacts.createPerson({
@@ -30,99 +30,112 @@ function Controller() {
     var $ = this;
     var exports = {};
     $.personDetail = Alloy.createModel("Person");
-    $.__views.detailWindow = Ti.UI.createWindow({
-        backgroundColor: "#fff",
-        layout: "vertical",
-        id: "detailWindow",
+    $.__views.personWindow = Ti.UI.createWindow({
+        backgroundColor: "#555",
+        id: "personWindow",
         model: "$.personDetail",
         dataTransform: "dataTransformation"
     });
-    $.__views.detailWindow && $.addTopLevelView($.__views.detailWindow);
+    $.__views.personWindow && $.addTopLevelView($.__views.personWindow);
+    $.__views.detailView = Ti.UI.createView({
+        backgroundColor: "#FFF",
+        layout: "vertical",
+        top: "10dp",
+        left: "10dp",
+        right: "10dp",
+        height: "400dp",
+        id: "detailView"
+    });
+    $.__views.personWindow.add($.__views.detailView);
     $.__views.accountImage = Ti.UI.createImageView({
         width: "15%",
         id: "accountImage"
     });
-    $.__views.detailWindow.add($.__views.accountImage);
+    $.__views.detailView.add($.__views.accountImage);
     $.__views.nameLabel = Ti.UI.createLabel({
-        width: "80%",
+        width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
         font: {
-            fontSize: 20,
-            fontFamily: "HelveticaNeueLight",
-            fontWeight: 200
+            fontSize: "20dp",
+            fontFamily: "HelveticaNeue-Light"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
+        top: "10dp",
         left: "10dp",
         id: "nameLabel"
     });
-    $.__views.detailWindow.add($.__views.nameLabel);
+    $.__views.detailView.add($.__views.nameLabel);
     $.__views.address1Label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
         font: {
-            fontSize: 20,
-            fontFamily: "HelveticaNeueLight",
-            fontWeight: 200
+            fontSize: "20dp",
+            fontFamily: "HelveticaNeue-Light"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
+        top: "10dp",
         left: "10dp",
         id: "address1Label"
     });
-    $.__views.detailWindow.add($.__views.address1Label);
+    $.__views.detailView.add($.__views.address1Label);
     $.__views.address2Label = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
         font: {
-            fontSize: 20,
-            fontFamily: "HelveticaNeueLight",
-            fontWeight: 200
+            fontSize: "20dp",
+            fontFamily: "HelveticaNeue-Light"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
+        top: "2dp",
         left: "10dp",
         id: "address2Label"
     });
-    $.__views.detailWindow.add($.__views.address2Label);
+    $.__views.detailView.add($.__views.address2Label);
     $.__views.phoneLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
         font: {
-            fontSize: 20,
-            fontFamily: "HelveticaNeueLight",
-            fontWeight: 200
+            fontSize: "20dp",
+            fontFamily: "HelveticaNeue-Light"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
         left: "10dp",
         id: "phoneLabel"
     });
-    $.__views.detailWindow.add($.__views.phoneLabel);
+    $.__views.detailView.add($.__views.phoneLabel);
     $.__views.emailLabel = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
         font: {
-            fontSize: 20,
-            fontFamily: "HelveticaNeueLight",
-            fontWeight: 200
+            fontSize: "20dp",
+            fontFamily: "HelveticaNeue-Light"
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
         left: "10dp",
         id: "emailLabel"
     });
-    $.__views.detailWindow.add($.__views.emailLabel);
+    $.__views.detailView.add($.__views.emailLabel);
     $.__views.saveContactButton = Ti.UI.createButton({
-        title: "Save Contact",
+        top: "20dp",
+        layout: "vertical",
         id: "saveContactButton"
     });
-    $.__views.detailWindow.add($.__views.saveContactButton);
+    $.__views.detailView.add($.__views.saveContactButton);
     var __alloyId25 = function() {
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
@@ -145,12 +158,17 @@ function Controller() {
     var args = arguments[0] || {};
     $.personDetail.set(args.data.attributes);
     $.parent = args.parentTab;
-    $.address1Label.addEventListener("click", function(e) {
-        doClickMaps(e);
-    });
-    $.address2Label.addEventListener("click", function(e) {
-        doClickMaps(e);
-    });
+    if (null != $.personDetail.get("address1")) {
+        $.address1Label.addEventListener("click", function(e) {
+            doClickMaps(e);
+        });
+        $.address2Label.addEventListener("click", function(e) {
+            doClickMaps(e);
+        });
+    } else {
+        $.detailView.remove($.address1Label);
+        $.detailView.remove($.address2Label);
+    }
     $.saveContactButton.addEventListener("click", function() {
         Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_AUTHORIZED ? saveContact() : Ti.Contacts.contactsAuthorization == Ti.Contacts.AUTHORIZATION_UNKNOWN && Ti.Contacts.requestAuthorization(function(e) {
             e.success && saveContact();

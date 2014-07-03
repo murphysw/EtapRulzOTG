@@ -9,16 +9,23 @@ $.personDetail.set(args.data.attributes);
 $.parent = args.parentTab;
 
 function doClickMaps(e) {  
+	var address = Ti.Network.encodeURIComponent($.personDetail.get("address1") + " " + $.personDetail.get("address2"));
 	if(OS_IOS) {
-		var address = Ti.Network.encodeURIComponent($.personDetail.get("address1") + " " + $.personDetail.get("address2"));
-	    Ti.Platform.openURL('maps://maps.google.com/maps?q=' + address);
+		Ti.Platform.openURL('maps://maps.google.com/maps?q=' + address);
 	} else {
-		Ti.Platform.openURL('geo:0,0?q=' + address);
+		Ti.Platform.openURL('http://maps.google.com/maps?q=' + address);
 	}
 }
 
-$.address1Label.addEventListener('click', function(e) { doClickMaps(e); });
-$.address2Label.addEventListener('click', function(e) { doClickMaps(e); });
+if($.personDetail.get("address1") != null) {
+	$.address1Label.addEventListener('click', function(e) { doClickMaps(e); });
+	$.address2Label.addEventListener('click', function(e) { doClickMaps(e); });	
+}
+else
+{
+	$.detailView.remove($.address1Label);
+	$.detailView.remove($.address2Label);
+}
 
 $.saveContactButton.addEventListener("click", function() {
 	

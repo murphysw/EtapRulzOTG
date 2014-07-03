@@ -7,14 +7,14 @@ function Controller() {
     var $ = this;
     var exports = {};
     var __alloyId21 = [];
-    $.__views.__alloyId22 = Alloy.createController("directory", {
+    $.__views.__alloyId22 = Alloy.createController("home", {
         id: "__alloyId22",
         __parentSymbol: __parentSymbol
     });
     __alloyId21.push($.__views.__alloyId22.getViewEx({
         recurse: true
     }));
-    $.__views.__alloyId23 = Alloy.createController("home", {
+    $.__views.__alloyId23 = Alloy.createController("directory", {
         id: "__alloyId23",
         __parentSymbol: __parentSymbol
     });

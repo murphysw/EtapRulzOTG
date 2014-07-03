@@ -1,18 +1,3 @@
-
-".container" : {
-  
-},
-"#homeView" : {
-	backgroundColor: "#555"
-},
-"#rssWindow": {
-	backgroundColor: "#FFF",
-	layout: 'vertical',
-	top: "10dp",
-	left: "10dp",
-	right: "10dp",
-	height: "400dp"
-},
 "#title": {
     height: '20dp',
     font: {

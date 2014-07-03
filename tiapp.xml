@@ -22,7 +22,7 @@
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
     <guid>fc60852b-4ad0-4403-845f-727f7630fd71</guid>
-    <property name="ti.ui.defaultunit" type="string">system</property>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
     <iphone>
         <orientations device="iphone">
             <orientation>Ti.UI.PORTRAIT</orientation>
@@ -56,7 +56,7 @@
         <target device="mobileweb">false</target>
         <target device="tizen">false</target>
     </deployment-targets>
-    <sdk-version>3.3.0.Beta</sdk-version>
+    <sdk-version>3.3.0.RC</sdk-version>
     <plugins>
         <plugin version="1.0">ti.alloy</plugin>
     </plugins>

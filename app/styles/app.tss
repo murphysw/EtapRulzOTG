@@ -6,10 +6,21 @@
 	height: Ti.UI.SIZE,
 	color: "#000",
 	font: {
-		fontSize: 20,
-		fontFamily: 'HelveticaNeueLight',
-		fontWeight: 200
+		fontSize: '20dp',
+		fontFamily: 'HelveticaNeue-Light',
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
-	ellipsize: 'false'	
-}
+	ellipsize: 'false',
+	layout: "vertical"
+},
+".wrapper" : {
+	backgroundColor: "#555"
+},
+".appView": {
+	backgroundColor: "#FFF",
+	layout: 'vertical',
+	top: "10dp",
+	left: "10dp",
+	right: "10dp",
+	height: "400dp"
+},

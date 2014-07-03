@@ -23,8 +23,10 @@ function Controller() {
     }
     function dataTransform(person) {
         person.set("name", person.get("FirstName") + " " + person.get("LastName"));
-        person.set("address1", person.get("AddressStreet"));
-        person.set("address2", person.get("AddressCity") + ", " + person.get("AddressState") + " " + person.get("AddressZip"));
+        if (person.get("AddressStreet")) {
+            person.set("address1", person.get("AddressStreet"));
+            person.set("address2", person.get("AddressCity") + ", " + person.get("AddressState") + " " + person.get("AddressZip"));
+        }
         person.set("url", "http://cornerstoneofgreenwood.com/app/images/profiles/" + person.get("ImageUrl"));
         return person;
     }
@@ -64,6 +66,7 @@ function Controller() {
                     },
                     textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
                     ellipsize: "false",
+                    layout: "vertical",
                     borderRadius: "5dp",
                     backgroundPaddingBottom: "5dp",
                     backgroundPaddingTop: "5dp",

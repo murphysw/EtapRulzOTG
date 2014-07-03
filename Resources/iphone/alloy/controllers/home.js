@@ -15,22 +15,22 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.homeView = Ti.UI.createWindow({
+    $.__views.rssWindow = Ti.UI.createWindow({
         backgroundColor: "#555",
-        id: "homeView",
+        id: "rssWindow",
         title: "Verse Of The Day"
     });
-    $.__views.rssWindow = Ti.UI.createView({
+    $.__views.rssView = Ti.UI.createView({
         backgroundColor: "#FFF",
         layout: "vertical",
         top: "10dp",
         left: "10dp",
         right: "10dp",
         height: "400dp",
-        id: "rssWindow",
+        id: "rssView",
         title: "Verse of the Day"
     });
-    $.__views.homeView.add($.__views.rssWindow);
+    $.__views.rssWindow.add($.__views.rssView);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: "20dp",
@@ -41,11 +41,12 @@ function Controller() {
         },
         textAlign: "left",
         ellipsize: "false",
+        layout: "vertical",
         top: "10dp",
         left: "20dp",
         id: "title"
     });
-    $.__views.rssWindow.add($.__views.title);
+    $.__views.rssView.add($.__views.title);
     $.__views.description = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
@@ -56,14 +57,15 @@ function Controller() {
         },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
+        layout: "vertical",
         top: "20dp",
         left: "20dp",
         right: "20dp",
         id: "description"
     });
-    $.__views.rssWindow.add($.__views.description);
+    $.__views.rssView.add($.__views.description);
     $.__views.homeTab = Ti.UI.createTab({
-        window: $.__views.homeView,
+        window: $.__views.rssWindow,
         id: "homeTab",
         title: "Verse"
     });

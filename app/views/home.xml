@@ -1,7 +1,7 @@
 <Alloy>
 	<Tab id="homeTab" title="Verse">
-		<Window id="homeView" title="Verse Of The Day">
-			<View id="rssWindow" title="Verse of the Day">
+		<Window id="rssWindow" class="wrapper" title="Verse Of The Day">
+			<View id="rssView" class="appView" title="Verse of the Day">
 				<Label id="title"/>
 				<Label id="description" />
 			</View>
