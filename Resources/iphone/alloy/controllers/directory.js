@@ -1,25 +1,34 @@
+function __processArg(obj, key) {
+    var arg = null;
+    if (obj) {
+        arg = obj[key] || null;
+        delete obj[key];
+    }
+    return arg;
+}
+
 function Controller() {
-    function __alloyId15(e) {
+    function __alloyId27(e) {
         if (e && e.fromAdapter) return;
-        var opts = __alloyId15.opts || {};
-        var models = __alloyId14.models;
+        var opts = __alloyId27.opts || {};
+        var models = __alloyId26.models;
         var len = models.length;
-        var __alloyId10 = [];
+        var __alloyId22 = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId11 = models[i];
-            __alloyId11.__transform = dataTransform(__alloyId11);
-            var __alloyId13 = {
+            var __alloyId23 = models[i];
+            __alloyId23.__transform = dataTransform(__alloyId23);
+            var __alloyId25 = {
                 name: {
-                    text: "undefined" != typeof __alloyId11.__transform["name"] ? __alloyId11.__transform["name"] : __alloyId11.get("name")
+                    text: "undefined" != typeof __alloyId23.__transform["name"] ? __alloyId23.__transform["name"] : __alloyId23.get("name")
                 },
                 properties: {
-                    searchableText: "undefined" != typeof __alloyId11.__transform["name"] ? __alloyId11.__transform["name"] : __alloyId11.get("name"),
+                    searchableText: "undefined" != typeof __alloyId23.__transform["name"] ? __alloyId23.__transform["name"] : __alloyId23.get("name"),
                     accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
                 }
             };
-            __alloyId10.push(__alloyId13);
+            __alloyId22.push(__alloyId25);
         }
-        opts.animation ? $.__views.peopleSection.setItems(__alloyId10, opts.animation) : $.__views.peopleSection.setItems(__alloyId10);
+        opts.animation ? $.__views.peopleSection.setItems(__alloyId22, opts.animation) : $.__views.peopleSection.setItems(__alloyId22);
     }
     function dataTransform(person) {
         person.set("name", person.get("FirstName") + " " + person.get("LastName"));
@@ -32,9 +41,11 @@ function Controller() {
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "directory";
-    arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    if (arguments[0]) {
+        __processArg(arguments[0], "__parentSymbol");
+        __processArg(arguments[0], "$model");
+        __processArg(arguments[0], "__itemTemplate");
+    }
     var $ = this;
     var exports = {};
     $.__views.directoryWindow = Ti.UI.createWindow({
@@ -42,17 +53,17 @@ function Controller() {
         id: "directoryWindow",
         title: "Directory"
     });
-    $.__views.__alloyId0 = Ti.UI.createSearchBar({
+    $.__views.__alloyId12 = Ti.UI.createSearchBar({
         barColor: "#333",
-        id: "__alloyId0"
+        id: "__alloyId12"
     });
-    var __alloyId1 = {};
-    var __alloyId4 = [];
-    var __alloyId5 = {
+    var __alloyId13 = {};
+    var __alloyId16 = [];
+    var __alloyId17 = {
         type: "Ti.UI.View",
         childTemplates: function() {
-            var __alloyId6 = [];
-            var __alloyId8 = {
+            var __alloyId18 = [];
+            var __alloyId20 = {
                 type: "Ti.UI.Label",
                 bindId: "name",
                 properties: {
@@ -74,15 +85,15 @@ function Controller() {
                     bindId: "name"
                 }
             };
-            __alloyId6.push(__alloyId8);
-            var __alloyId9 = {
+            __alloyId18.push(__alloyId20);
+            var __alloyId21 = {
                 type: "Ti.UI.ImageView",
                 properties: {
                     image: "/KS_nav"
                 }
             };
-            __alloyId6.push(__alloyId9);
-            return __alloyId6;
+            __alloyId18.push(__alloyId21);
+            return __alloyId18;
         }(),
         properties: {
             height: "32dp",
@@ -95,26 +106,26 @@ function Controller() {
             layout: "vertical"
         }
     };
-    __alloyId4.push(__alloyId5);
-    var __alloyId3 = {
+    __alloyId16.push(__alloyId17);
+    var __alloyId15 = {
         properties: {
             name: "template"
         },
-        childTemplates: __alloyId4
+        childTemplates: __alloyId16
     };
-    __alloyId1["template"] = __alloyId3;
+    __alloyId13["template"] = __alloyId15;
     $.__views.peopleSection = Ti.UI.createListSection({
         id: "peopleSection"
     });
-    var __alloyId14 = Alloy.Collections["Person"] || Person;
-    __alloyId14.on("fetch destroy change add remove reset", __alloyId15);
-    var __alloyId16 = [];
-    __alloyId16.push($.__views.peopleSection);
+    var __alloyId26 = Alloy.Collections["Person"] || Person;
+    __alloyId26.on("fetch destroy change add remove reset", __alloyId27);
+    var __alloyId28 = [];
+    __alloyId28.push($.__views.peopleSection);
     $.__views.directoryList = Ti.UI.createListView({
         backgroundColor: "#333",
-        sections: __alloyId16,
-        templates: __alloyId1,
-        searchView: $.__views.__alloyId0,
+        sections: __alloyId28,
+        templates: __alloyId13,
+        searchView: $.__views.__alloyId12,
         id: "directoryList",
         defaultItemTemplate: "template"
     });
@@ -127,7 +138,7 @@ function Controller() {
     });
     $.__views.directoryTab && $.addTopLevelView($.__views.directoryTab);
     exports.destroy = function() {
-        __alloyId14.off("fetch destroy change add remove reset", __alloyId15);
+        __alloyId26.off("fetch destroy change add remove reset", __alloyId27);
     };
     _.extend($, $.__views);
     var peopleCollection = Alloy.Collections.Person;

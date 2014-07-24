@@ -3,5 +3,6 @@
 		<Require src="home"/>
 		<Require src="directory"/>
 		<Require src="nursery"/>
+		<Require src ="RecommendedItems"/>
 	</TabGroup>
 </Alloy>
