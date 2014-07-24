@@ -1,0 +1,20 @@
+<Alloy>
+	<Tab id="newsfeedTab" title="My Newsfeed" icon="KS_nav_ui.png">
+		<Window id="newsfeedWindow">
+			<ListView class="container" id="newsfeedList" defaultItemTemplate="basicNewsfeedItem">
+				<SearchBar barColor="#333" />
+				<ListSection id="peopleSection" dataCollection="newsfeed" dataTransform="dataTransform">
+					<ListItem name:text="{name}" amount:text="{amount}" searchableText="{name}" />
+				</ListSection>
+				<Templates>
+				    <ItemTemplate name="basicNewsfeedItem">
+				        <View id="wrapper" class="row">
+				        	<Label bindId="name" />
+							<Label bindId="amount" />
+						</View>
+				    </ItemTemplate>
+				</Templates>
+			</ListView>
+		</Window>
+	</Tab>
+</Alloy>

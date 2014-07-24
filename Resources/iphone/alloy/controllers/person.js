@@ -1,12 +1,3 @@
-function __processArg(obj, key) {
-    var arg = null;
-    if (obj) {
-        arg = obj[key] || null;
-        delete obj[key];
-    }
-    return arg;
-}
-
 function Controller() {
     function doClickMaps() {
         var address = Ti.Network.encodeURIComponent($.personDetail.get("address1") + " " + $.personDetail.get("address2"));
@@ -33,11 +24,9 @@ function Controller() {
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "person";
-    if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
-    }
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.personDetail = Alloy.createModel("Person");
@@ -148,7 +137,7 @@ function Controller() {
         id: "saveContactButton"
     });
     $.__views.detailView.add($.__views.saveContactButton);
-    var __alloyId38 = function() {
+    var __alloyId60 = function() {
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.nameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["name"] : $.personDetail.get("name");
@@ -162,9 +151,9 @@ function Controller() {
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
     };
-    $.personDetail.on("fetch change destroy", __alloyId38);
+    $.personDetail.on("fetch change destroy", __alloyId60);
     exports.destroy = function() {
-        $.personDetail.off("fetch change destroy", __alloyId38);
+        $.personDetail.off("fetch change destroy", __alloyId60);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};

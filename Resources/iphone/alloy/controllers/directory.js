@@ -1,34 +1,28 @@
-function __processArg(obj, key) {
-    var arg = null;
-    if (obj) {
-        arg = obj[key] || null;
-        delete obj[key];
-    }
-    return arg;
-}
-
 function Controller() {
-    function __alloyId27(e) {
+    function __alloyId28(e) {
         if (e && e.fromAdapter) return;
-        var opts = __alloyId27.opts || {};
-        var models = __alloyId26.models;
+        var opts = __alloyId28.opts || {};
+        var models = __alloyId27.models;
         var len = models.length;
-        var __alloyId22 = [];
+        var __alloyId23 = [];
         for (var i = 0; len > i; i++) {
-            var __alloyId23 = models[i];
-            __alloyId23.__transform = dataTransform(__alloyId23);
-            var __alloyId25 = {
+            var __alloyId24 = models[i];
+            __alloyId24.__transform = dataTransform(__alloyId24);
+            var __alloyId26 = {
                 name: {
-                    text: "undefined" != typeof __alloyId23.__transform["name"] ? __alloyId23.__transform["name"] : __alloyId23.get("name")
+                    text: "undefined" != typeof __alloyId24.__transform["name"] ? __alloyId24.__transform["name"] : __alloyId24.get("name")
+                },
+                image: {
+                    image: "undefined" != typeof __alloyId24.__transform["url"] ? __alloyId24.__transform["url"] : __alloyId24.get("url")
                 },
                 properties: {
-                    searchableText: "undefined" != typeof __alloyId23.__transform["name"] ? __alloyId23.__transform["name"] : __alloyId23.get("name"),
+                    searchableText: "undefined" != typeof __alloyId24.__transform["name"] ? __alloyId24.__transform["name"] : __alloyId24.get("name"),
                     accessoryType: Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE
                 }
             };
-            __alloyId22.push(__alloyId25);
+            __alloyId23.push(__alloyId26);
         }
-        opts.animation ? $.__views.peopleSection.setItems(__alloyId22, opts.animation) : $.__views.peopleSection.setItems(__alloyId22);
+        opts.animation ? $.__views.peopleSection.setItems(__alloyId23, opts.animation) : $.__views.peopleSection.setItems(__alloyId23);
     }
     function dataTransform(person) {
         person.set("name", person.get("FirstName") + " " + person.get("LastName"));
@@ -41,11 +35,9 @@ function Controller() {
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "directory";
-    if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
-    }
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     $.__views.directoryWindow = Ti.UI.createWindow({
@@ -86,13 +78,14 @@ function Controller() {
                 }
             };
             __alloyId18.push(__alloyId20);
-            var __alloyId21 = {
+            var __alloyId22 = {
                 type: "Ti.UI.ImageView",
+                bindId: "image",
                 properties: {
-                    image: "/KS_nav"
+                    bindId: "image"
                 }
             };
-            __alloyId18.push(__alloyId21);
+            __alloyId18.push(__alloyId22);
             return __alloyId18;
         }(),
         properties: {
@@ -117,13 +110,13 @@ function Controller() {
     $.__views.peopleSection = Ti.UI.createListSection({
         id: "peopleSection"
     });
-    var __alloyId26 = Alloy.Collections["Person"] || Person;
-    __alloyId26.on("fetch destroy change add remove reset", __alloyId27);
-    var __alloyId28 = [];
-    __alloyId28.push($.__views.peopleSection);
+    var __alloyId27 = Alloy.Collections["Person"] || Person;
+    __alloyId27.on("fetch destroy change add remove reset", __alloyId28);
+    var __alloyId29 = [];
+    __alloyId29.push($.__views.peopleSection);
     $.__views.directoryList = Ti.UI.createListView({
         backgroundColor: "#333",
-        sections: __alloyId28,
+        sections: __alloyId29,
         templates: __alloyId13,
         searchView: $.__views.__alloyId12,
         id: "directoryList",
@@ -138,7 +131,7 @@ function Controller() {
     });
     $.__views.directoryTab && $.addTopLevelView($.__views.directoryTab);
     exports.destroy = function() {
-        __alloyId26.off("fetch destroy change add remove reset", __alloyId27);
+        __alloyId27.off("fetch destroy change add remove reset", __alloyId28);
     };
     _.extend($, $.__views);
     var peopleCollection = Alloy.Collections.Person;

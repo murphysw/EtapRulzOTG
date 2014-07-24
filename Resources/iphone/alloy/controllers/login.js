@@ -1,20 +1,9 @@
-function __processArg(obj, key) {
-    var arg = null;
-    if (obj) {
-        arg = obj[key] || null;
-        delete obj[key];
-    }
-    return arg;
-}
-
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
-    if (arguments[0]) {
-        __processArg(arguments[0], "__parentSymbol");
-        __processArg(arguments[0], "$model");
-        __processArg(arguments[0], "__itemTemplate");
-    }
+    arguments[0] ? arguments[0]["__parentSymbol"] : null;
+    arguments[0] ? arguments[0]["$model"] : null;
+    arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
     Alloy.Collections.instance("Person");
@@ -38,10 +27,7 @@ function Controller() {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
-        font: {
-            fontSize: "20dp",
-            fontFamily: "HelveticaNeue-Light"
-        },
+        font: {},
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
         layout: "vertical",
