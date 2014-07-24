@@ -1,9 +1,9 @@
-if (!Ti.App.Properties.hasProperty('seeded')) {
-	var url = "http://www.cornerstoneofgreenwood.com/app/php/directoryquery.php";
+	var url = "http://172.24.50.76:8080/prod/restAPI.do";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
-	         Ti.API.info("Received text: " + this.responseText);
-	         Alloy.Collections.Person.reset(JSON.parse(this.responseText));
+	     	 Ti.API.info("done!");
+	         Ti.API.info("Receiveds text: " + this.responseText);
+	         //Alloy.Collections.Person.reset(JSON.parse(this.responseText));
     		 
     		 $.tabGroup.open();
 	     },
@@ -15,9 +15,4 @@ if (!Ti.App.Properties.hasProperty('seeded')) {
 	});
 	client.open("GET", url);
 	client.send();
-}
-else
-{
-	$.tabGroup.open();
-}
 

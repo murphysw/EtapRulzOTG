@@ -1,3 +1,12 @@
+function __processArg(obj, key) {
+    var arg = null;
+    if (obj) {
+        arg = obj[key] || null;
+        delete obj[key];
+    }
+    return arg;
+}
+
 function Controller() {
     function refreshRss(url) {
         rss.loadRssFeed(url, {
@@ -10,9 +19,11 @@ function Controller() {
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "home";
-    arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    if (arguments[0]) {
+        __processArg(arguments[0], "__parentSymbol");
+        __processArg(arguments[0], "$model");
+        __processArg(arguments[0], "__itemTemplate");
+    }
     var $ = this;
     var exports = {};
     $.__views.rssWindow = Ti.UI.createWindow({
@@ -33,10 +44,10 @@ function Controller() {
     $.__views.rssWindow.add($.__views.rssView);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: "20dp",
+        height: "40dp",
         color: "#000",
         font: {
-            fontSize: "25dp",
+            fontSize: "35dp",
             fontFamily: "HelveticaNeue-Light"
         },
         textAlign: "left",
