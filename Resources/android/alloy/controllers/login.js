@@ -1,9 +1,20 @@
+function __processArg(obj, key) {
+    var arg = null;
+    if (obj) {
+        arg = obj[key] || null;
+        delete obj[key];
+    }
+    return arg;
+}
+
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     this.__controllerPath = "login";
-    arguments[0] ? arguments[0]["__parentSymbol"] : null;
-    arguments[0] ? arguments[0]["$model"] : null;
-    arguments[0] ? arguments[0]["__itemTemplate"] : null;
+    if (arguments[0]) {
+        __processArg(arguments[0], "__parentSymbol");
+        __processArg(arguments[0], "$model");
+        __processArg(arguments[0], "__itemTemplate");
+    }
     var $ = this;
     var exports = {};
     Alloy.Collections.instance("Person");
@@ -21,7 +32,7 @@ function Controller() {
         top: 20,
         layout: "vertical",
         width: "75%",
-        height: "50%",
+        height: "90%",
         id: "wrapper"
     });
     $.__views.logincontainer.add($.__views.wrapper);
@@ -29,7 +40,10 @@ function Controller() {
         width: Ti.UI.SIZE,
         height: Ti.UI.SIZE,
         color: "#000",
-        font: {},
+        font: {
+            fontSize: "20dp",
+            fontFamily: "HelveticaNeue-Light"
+        },
         textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
         ellipsize: "false",
         layout: "vertical",
@@ -77,6 +91,16 @@ function Controller() {
         id: "submit"
     });
     $.__views.wrapper.add($.__views.submit);
+    $.__views.signup = Ti.UI.createButton({
+        title: "Don't have an account? Sign up here!",
+        backgroundColor: "#fff",
+        left: 10,
+        right: 10,
+        height: "40dp",
+        top: 10,
+        id: "signup"
+    });
+    $.__views.wrapper.add($.__views.signup);
     exports.destroy = function() {};
     _.extend($, $.__views);
     var acs = require("acs");
@@ -105,6 +129,11 @@ function Controller() {
         $.password.blur();
         $.submit.title = "Working ...";
         acs.createUser($.name.value, $.password.value, createCallback);
+    });
+    $.signup.addEventListener("click", function() {
+        $.logincontainer.hide();
+        var signupController = Alloy.createController("signup");
+        signupController.getView().open();
     });
     _.extend($, exports);
 }

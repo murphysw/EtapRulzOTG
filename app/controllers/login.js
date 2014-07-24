@@ -29,3 +29,9 @@ $.submit.addEventListener('click', function() {
 	acs.createUser($.name.value, $.password.value, createCallback);
 });
 
+$.signup.addEventListener('click', function() {
+	$.logincontainer.hide();
+	var signupController = Alloy.createController('signup');
+	signupController.getView().open();
+});
+

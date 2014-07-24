@@ -1,4 +1,4 @@
-".logincontainer": {
+".container": {
 	height: Ti.UI.FILL,
 	top: 20,
 	backgroundColor: "#FFF",
@@ -28,20 +28,13 @@
 	autocorrection: false,
 	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
 },
-"#password": {
+".password": {
 	passwordMask: true,
 	autocorrection: false,
 	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
 }
 "#submit": {
-	title: 'Create Account',
-	backgroundColor: '#fff',
-	left: 10, right: 10,
-	height: '40dp',
-	top: 10
-},
-"#signup": {
-	title: "Don't have an account? Sign up here!",
+	title: 'Sign Up',
 	backgroundColor: '#fff',
 	left: 10, right: 10,
 	height: '40dp',

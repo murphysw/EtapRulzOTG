@@ -6,6 +6,7 @@
 			<TextField id='name' hintText='username'/>
 			<TextField id='password' hintText='password'/>
 			<Button id='submit'/>
+			<Button id='signup'/>
 		</View>
 	</Window>
 </Alloy>

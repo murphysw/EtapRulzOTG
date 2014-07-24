@@ -1,0 +1,15 @@
+<Alloy>
+	<Window id="SignupWindow">
+		<View class="container">
+			<Label text="Signup" id='title'/>
+			<TextField id='name' hintText='name'/>
+			<TextField id='email' hintText='email'/>
+			<TextField id='phone' hintText='phone'/>
+			<TextField id='organizationName' hintText='organizationName'/>
+			<TextField id='state' hintText='state'/>
+			<TextField id='password' class="password" hintText='password'/>
+			<TextField id='confirmPassword' class="password" hintText='confirmPassword'/>
+			<Button id='submit'/>
+		</View>
+	</Window>
+</Alloy>
