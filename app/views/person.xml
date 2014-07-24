@@ -1,5 +1,5 @@
 <Alloy>
-    <Model src="Person" instance="true" id="personDetail"> 
+    <Model src="Person" instance="true" id="personDetail"/> 
     <!-- dataTransform is not wired up yet, but i hacked it into my code -->
 	<Window id="personWindow" class="wrapper" model="$.personDetail" dataTransform="dataTransformation">
 		<View id="detailView" class="appView">

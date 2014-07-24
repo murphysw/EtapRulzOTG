@@ -6,6 +6,8 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
+    Alloy.Collections.instance("newsfeed");
+    Alloy.Collections.instance("todo");
     Alloy.Collections.instance("Person");
     exports.destroy = function() {};
     _.extend($, $.__views);

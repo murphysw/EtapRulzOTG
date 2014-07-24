@@ -1,6 +1,7 @@
 <Alloy>
 	<TabGroup id="tabGroup">
-		<Require src="todo"/>
+		<Require src="RecommendedItems"/>
 		<Require src="newsfeed"/>
+		<Require src="directory"/>
 	</TabGroup>
 </Alloy>

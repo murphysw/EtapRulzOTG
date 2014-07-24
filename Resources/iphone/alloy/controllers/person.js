@@ -137,7 +137,7 @@ function Controller() {
         id: "saveContactButton"
     });
     $.__views.detailView.add($.__views.saveContactButton);
-    var __alloyId25 = function() {
+    var __alloyId60 = function() {
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.accountImage.image = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["url"] : $.personDetail.get("url");
         $.nameLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["name"] : $.personDetail.get("name");
@@ -151,9 +151,9 @@ function Controller() {
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
         $.emailLabel.text = _.isFunction($.personDetail.transform) ? $.personDetail.transform()["Email"] : $.personDetail.get("Email");
     };
-    $.personDetail.on("fetch change destroy", __alloyId25);
+    $.personDetail.on("fetch change destroy", __alloyId60);
     exports.destroy = function() {
-        $.personDetail.off("fetch change destroy", __alloyId25);
+        $.personDetail.off("fetch change destroy", __alloyId60);
     };
     _.extend($, $.__views);
     var args = arguments[0] || {};
