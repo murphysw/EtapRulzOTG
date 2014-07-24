@@ -1,13 +1,14 @@
 "#title": {
-    height: '20dp',
+    height: '40dp',
     font: {
-		fontSize: '25dp',
+		fontSize: '35dp',
 		fontFamily: 'HelveticaNeue-Light'
 	},
 	width: Ti.UI.SIZE,
     top: '10dp',
     left: '20dp',
-    textAlign: 'left'
+    textAlign: 'left',
+    layout: "vertical"
 }
 "#description": {
 	top: '20dp',
@@ -16,5 +17,6 @@
 	font: {
 		fontSize: 20,
 		fontFamily: 'HelveticaNeue-Light'
-	}
+	},
+	layout:'vertical'
 }

@@ -6,13 +6,13 @@ function Controller() {
     arguments[0] ? arguments[0]["__itemTemplate"] : null;
     var $ = this;
     var exports = {};
-    $.__views.nursery = Ti.UI.createWindow({
-        backgroundColor: "#FFF",
-        id: "nursery",
+    $.__views.nurseryWindow = Ti.UI.createWindow({
+        backgroundColor: "transparent",
+        id: "nurseryWindow",
         title: "Nursery"
     });
     $.__views.calendar = Ti.UI.createTab({
-        window: $.__views.nursery,
+        window: $.__views.nurseryWindow,
         id: "calendar",
         title: "Calendar",
         icon: "KS_nav_views.png"

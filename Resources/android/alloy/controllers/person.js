@@ -131,6 +131,7 @@ function Controller() {
     });
     $.__views.detailView.add($.__views.emailLabel);
     $.__views.saveContactButton = Ti.UI.createButton({
+        title: "Save Contact",
         top: "20dp",
         layout: "vertical",
         id: "saveContactButton"

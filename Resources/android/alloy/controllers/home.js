@@ -33,10 +33,10 @@ function Controller() {
     $.__views.rssWindow.add($.__views.rssView);
     $.__views.title = Ti.UI.createLabel({
         width: Ti.UI.SIZE,
-        height: "20dp",
+        height: "40dp",
         color: "#000",
         font: {
-            fontSize: "25dp",
+            fontSize: "35dp",
             fontFamily: "HelveticaNeue-Light"
         },
         textAlign: "left",
