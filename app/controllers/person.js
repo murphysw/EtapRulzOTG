@@ -1,6 +1,3 @@
-/**
- * @author Ian Thomas
- */
 var args = arguments[0] || {};
 var person;
 var contact;

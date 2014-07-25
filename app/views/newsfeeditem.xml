@@ -1,0 +1,8 @@
+<Alloy>
+    <Model src="newsfeed" instance="true" id="newsfeeditem"/> 
+	<Window id="newsfeeditemWindow" class="wrapper" model="$.newsfeeditem" dataTransform="dataTransform">
+		<View id="detailView" class="appView">
+			<Label id="nameLabel" text="{$.newsfeeditem.text}" ></Label>
+		</View>
+	</Window>
+</Alloy>

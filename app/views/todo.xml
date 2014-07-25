@@ -1,4 +1,19 @@
 <Alloy>
-	<View class="container">
-	</View>
+	<Tab id="todoTab" title="Today's Tasks" icon="KS_nav_ui.png">
+		<Window id="todoWindow">
+			<ListView class="container" id="todoList" defaultItemTemplate="template">
+				<SearchBar barColor="#333" />
+				<ListSection id="todoTasks" dataCollection="todo" dataTransform="dataTransform">
+					<ListItem name:text="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
+				</ListSection>
+				<Templates>
+				    <ItemTemplate name="template">
+				        <View id="wrapper" class="row">
+							<Label bindId="name"/>
+						</View>
+				    </ItemTemplate>
+				</Templates>
+			</ListView>
+		</Window>
+	</Tab>
 </Alloy>

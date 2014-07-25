@@ -6,11 +6,11 @@
     <property name="acs-oauth-secret-development" type="string">VsibuPwFdwBEMtWUC9NK89y0m6u5gVg2</property>
     <property name="acs-oauth-key-development" type="string">iwKtlnT5mwroVvtPyd0N4cMGbfrjBgRP</property>
     <property name="acs-api-key-development" type="string">6bhRxVacMwgMMzc4mVTwE6RKNjwV0ZLs</property>
-    <id>com.twinsoft.Cornerstone</id>
-    <name>Cornerstone</name>
+    <id>com.eTapestry.etapdo</id>
+    <name>eTap.do</name>
     <version>1.0</version>
     <publisher>Ian Thomas</publisher>
-    <url>http://www.cornerstoneofgreenwood.com</url>
+    <url>http://www.etapestry.com</url>
     <description>eTap RULZ</description>
     <copyright>2013 by Ian Thomas</copyright>
     <icon>appicon.png</icon>

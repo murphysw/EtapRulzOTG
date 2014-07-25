@@ -3,14 +3,13 @@
 		<Window id="newsfeedWindow">
 			<ListView class="container" id="newsfeedList" defaultItemTemplate="basicNewsfeedItem">
 				<SearchBar barColor="#333" />
-				<ListSection id="peopleSection" dataCollection="newsfeed" dataTransform="dataTransform">
-					<ListItem name:text="{name}" amount:text="{amount}" searchableText="{name}" />
+				<ListSection id="newsfeedSection" dataCollection="newsfeed" dataTransform="dataTransform">
+					<ListItem subject:text="{subject}" searchableText="{name}" />
 				</ListSection>
 				<Templates>
 				    <ItemTemplate name="basicNewsfeedItem">
 				        <View id="wrapper" class="row">
-				        	<Label bindId="name" />
-							<Label bindId="amount" />
+				        	<Label bindId="subject" />
 						</View>
 				    </ItemTemplate>
 				</Templates>
