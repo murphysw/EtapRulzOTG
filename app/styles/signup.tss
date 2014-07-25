@@ -1,11 +1,19 @@
 ".container": {
 	height: Ti.UI.FILL,
 	top: 20,
-	backgroundColor: "#FFF",
-	layout: 'vertical'
+	layout: 'vertical',
+	backgroundColor:"#FFF"
 },
+"#SignupWindow":{
+	backgroundColor:"#FFF"
+}
+".InputLabel":{
+	left: 10
+}
+"#passwordRequirements":{
+	
+}
 "#wrapper": {
-	backgroundColor: "#CCC",
 	borderRadius: 8,
 	top: 20,
 	layout: 'vertical'
@@ -16,7 +24,7 @@
 },
 "TextField": {
 	backgroundColor: "#FFF",
-	color: "#FFF",
+	color: "#888",
 	left: 10, 
 	right: 10,
 	height: '40dp',
@@ -24,7 +32,6 @@
 	top: 10
 },
 "#name": {
-	top: 30,
 	autocorrection: false,
 	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
 },
@@ -40,6 +47,10 @@
 	height: '40dp',
 	top: 10
 },
+"#cancel":{
+	
+},
+
 "#title": {
 	top: 10,
 	font: {
