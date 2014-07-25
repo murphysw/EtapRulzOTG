@@ -14,19 +14,11 @@ $.todoList.addEventListener('itemclick', function(_e) {
 	if(controllertype == "generic")
 		controllertype = "task";
 		
-    var detailController = Alloy.createController(controllerType, {
+    var detailController = Alloy.createController(controllertype, {
         parentTab : $.todoTab,
         data : item
     });
     $.todoTab.open(detailController.getView());
-    
-	
-		
-    var detailController = Alloy.createController(controllertype, {
-        parentTab : $.newsfeedTab,
-        data : collection.models[_e.itemIndex]
-    });
-    $.newsfeedTab.open(detailController.getView());
 });
 
 todoItems.fetch();

@@ -1,1 +1,1 @@
-var controller = Alloy.createController('main').getView().open();
+var controller = Alloy.createController('login').getView().open();

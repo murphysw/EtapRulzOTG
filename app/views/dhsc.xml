@@ -3,9 +3,9 @@
 	<Window id="newsfeeditemWindow" class="wrapper" model="$.activity" dataTransform="dataTransform">
 		<View id="detailView" class="appView">
 			<Label id="titleLabel" text="Data Health Scorecard" ></Label>
-			<Label id="gradeLabel" text="{$.activity.dhsc.gradeNcoa}" ></Label>
-			<Label id="totalLabel" text="{$.activity.dhsc.totalRecords}" ></Label>
-			<Label id="badLabel" text="{$.activity.dhsc.badAddress}" ></Label>
+			<Label id="gradeLabel" text="{$.activity.gradeNcoa}" ></Label>
+			<Label id="totalLabel" text="{$.activity.totalRecords}" ></Label>
+			<Label id="badLabel" text="{$.activity.badAddress}" ></Label>
 		</View>
 	</Window>
 </Alloy>

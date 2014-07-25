@@ -3,6 +3,7 @@ var args = arguments[0] || {};
 var api = require('apicall');
 
 $.taskitem.set(args.data.attributes);
+$.taskitem.set("callPhone", "Call: " + args.data.attributes.phone);
 $.parent = args.parentTab;
 
 $.remindImage.addEventListener("click", function() {
