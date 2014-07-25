@@ -23,7 +23,7 @@ function grabTodo() {
 }
 
 function grabNewsfeed() {
-	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=getNewsFeed&type=news&db=OffTheGrid2&userRef=82.0.4860";
+	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=getNewsFeed&type=&db=OffTheGrid2&userRef=82.0.4860";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
@@ -41,6 +41,6 @@ function grabNewsfeed() {
 }
 
 grabTodo();
-Alloy.Collections.newsfeed.reset(gifts);
-//grabNewsfeed();
+//Alloy.Collections.newsfeed.reset(gifts);
+grabNewsfeed();
 $.tabGroup.open();

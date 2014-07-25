@@ -2,17 +2,13 @@
 	height: Ti.UI.FILL,
 	top: 20,
 	layout: 'vertical',
-	backgroundColor:"FFF"
-	
+	backgroundColor:"#FFF"
 },
 "#wrapper": {
 	top: 20,
 	layout: 'vertical',
-	backgroundColor:"#FFF"
-},
-"#wrapper[platform=android]": {
-	width: '75%',
-	height: '90%'
+	backgroundColor:"#FFF",
+	width: "100%"
 },
 "TextField": {
 	backgroundColor: "#FFF",
@@ -23,20 +19,25 @@
 	borderColor: '#888',
 	top: 10
 },
-"signup": {
-	top: 10,
-	font: {
-		color:"#2C5EA9"
-	}	
-},
 "submit":{
-	top:20
+	top:"20dp",
+	layout: "vertical",
+	left: "30dp",
+	right: "30dp"
 }
 "#logo":{
-	top:50
+	top:"20dp",
+	layout: "vertical",
+	width: "50%",
+	left: "30dp",
+	right: "30dp"
 }
 "#google":{
-	
+	top:"20dp",
+	layout: "vertical",
+	width: "90%",
+	left: "30dp",
+	right: "30dp"
 }
 "#title": {
 	top: 10,
@@ -45,5 +46,8 @@
 	}	
 },
 "#signup": {
-	
+	top: 10,
+	font: {
+		color:"#2C5EA9"
+	}
 }

@@ -1,3 +1,7 @@
 ".container" : {
   
+},
+"TabGroup" : {
+	backgroundColor: "#AFE890",
+	activeTabBackgroundColor: "#AFE890"
 }
