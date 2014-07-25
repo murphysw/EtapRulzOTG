@@ -8,7 +8,7 @@ function dataTransform(item) {
 };
 
 $.todoList.addEventListener('itemclick', function(_e) {
-    var detailController = Alloy.createController('todoitem', {
+    var detailController = Alloy.createController('task', {
         parentTab : $.todoTab,
         data : Alloy.Collections.todo.models[_e.itemIndex]
     });

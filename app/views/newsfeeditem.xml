@@ -2,7 +2,7 @@
     <Model src="newsfeed" instance="true" id="newsfeeditem"/> 
 	<Window id="newsfeeditemWindow" class="wrapper" model="$.newsfeeditem" dataTransform="dataTransform">
 		<View id="detailView" class="appView">
-			<Label id="nameLabel" text="{$.newsfeeditem.text}" ></Label>
+			<Label id="nameLabel" text="{$.newsfeeditem.subject}" ></Label>
 		</View>
 	</Window>
 </Alloy>

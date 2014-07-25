@@ -1,5 +1,4 @@
 <Alloy>
-	<Collection src="Person" />
 	<Window class="logincontainer" id="logincontainer">
 		<View id='wrapper'>
 			<ImageView id="logo" image="/trent_etap_do_logo.png"></ImageView>

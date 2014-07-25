@@ -1,0 +1,21 @@
+
+".container" : {
+  
+},
+"#nameLabel" : {
+	height: "120dp",
+	layout: "vertical"
+},
+"ImageView" : {
+	width: "30%",
+	left: "20dp"
+}
+"#remindImage": {
+	image: "/button_remind.png"
+},
+"#doneImage": {
+	image: "/button_done.png"
+},
+"#ignoreImage": {
+	image: "/button_dismiss.png"
+}

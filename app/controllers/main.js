@@ -11,7 +11,6 @@ function grabTodo() {
 	     onload : function(e) {
 	         Ti.API.info("Received todo tasks: " + this.responseText);
 	         Alloy.Collections.todo.reset(JSON.parse(this.responseText).establishedUserTasks);
-	     	 Alloy.Collections.todo.fetch();
 	     },
 	     onerror : function(e) {
 	         Ti.API.debug(e.error);
@@ -43,6 +42,5 @@ function grabNewsfeed() {
 
 grabTodo();
 Alloy.Collections.newsfeed.reset(gifts);
-
 //grabNewsfeed();
 $.tabGroup.open();

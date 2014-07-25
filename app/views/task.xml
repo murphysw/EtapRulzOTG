@@ -1,0 +1,11 @@
+<Alloy>
+    <Model src="todo" instance="true" id="taskitem"/> 
+	<Window id="taskWindow" class="wrapper" model="$.taskitem" dataTransform="dataTransform">
+		<View id="detailView" class="appView">
+			<Label id="nameLabel" text="{$.taskitem.name}" ></Label>
+			<ImageView id="remindImage" />
+			<ImageView id="doneImage" />
+			<ImageView id="ignoreImage" />
+		</View>
+	</Window>
+</Alloy>
