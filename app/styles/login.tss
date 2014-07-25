@@ -1,45 +1,43 @@
-".logincontainer": {
+"#logincontainer": {
 	height: Ti.UI.FILL,
 	top: 20,
-	backgroundColor: "#FFF",
-	layout: 'vertical'
+	layout: 'vertical',
+	backgroundColor:"FFF"
+	
 },
 "#wrapper": {
-	backgroundColor: "#CCC",
-	borderRadius: 8,
 	top: 20,
-	layout: 'vertical'
+	layout: 'vertical',
+	backgroundColor:"#FFF"
 },
 "#wrapper[platform=android]": {
 	width: '75%',
-	height: '50%'
+	height: '90%'
 },
 "TextField": {
 	backgroundColor: "#FFF",
-	color: "#FFF",
+	color: "#888",
 	left: 10, 
 	right: 10,
 	height: '40dp',
 	borderColor: '#888',
 	top: 10
 },
-"#name": {
-	top: 30,
-	autocorrection: false,
-	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
+"signup": {
+	top: 10,
+	font: {
+		color:"#2C5EA9"
+	}	
 },
-"#password": {
-	passwordMask: true,
-	autocorrection: false,
-	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
+"submit":{
+	top:20
 }
-"#submit": {
-	title: 'Create Account',
-	backgroundColor: '#fff',
-	left: 10, right: 10,
-	height: '40dp',
-	top: 10
-},
+"#logo":{
+	top:50
+}
+"#google":{
+	
+}
 "#title": {
 	top: 10,
 	font: {
