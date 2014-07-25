@@ -13,6 +13,7 @@ $.submit.addEventListener('click', function() {
 	         else
 	         {
 	         	alert("Success! You will receive an email asking to verify your email address.");
+	         	$.SignupWindow.close();
 	         }
 	     },
 	     onerror : function(e) {

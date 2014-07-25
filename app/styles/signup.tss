@@ -6,13 +6,13 @@
 },
 "#SignupWindow":{
 	backgroundColor:"#FFF"
-}
+},
 ".InputLabel":{
 	left: 10
-}
+},
 "#passwordRequirements":{
 	
-}
+},
 "#wrapper": {
 	borderRadius: 8,
 	top: 20,
@@ -39,21 +39,18 @@
 	passwordMask: true,
 	autocorrection: false,
 	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
-}
+},
 "#submit": {
 	title: 'Sign Up',
-	backgroundColor: '#fff',
+	backgroundColor: '#AFE890',
 	left: 10, right: 10,
 	height: '40dp',
-	top: 10
+	top: 10,
+	color: "#000"
 },
 "#cancel":{
 	
 },
-
 "#title": {
-	top: 10,
-	font: {
-		
-	}	
+	top: 10
 }

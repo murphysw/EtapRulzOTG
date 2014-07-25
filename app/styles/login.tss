@@ -19,35 +19,25 @@
 	borderColor: '#888',
 	top: 10
 },
-"submit":{
+"#submit":{
 	top:"20dp",
 	layout: "vertical",
-	left: "30dp",
-	right: "30dp"
-}
+	width: 400,
+},
 "#logo":{
 	top:"20dp",
 	layout: "vertical",
-	width: "50%",
-	left: "30dp",
-	right: "30dp"
-}
+	width: "100%"
+},
 "#google":{
 	top:"20dp",
 	layout: "vertical",
-	width: "90%",
-	left: "30dp",
-	right: "30dp"
-}
+	width: 450
+},
 "#title": {
-	top: 10,
-	font: {
-		
-	}	
+	top: 10
 },
 "#signup": {
 	top: 10,
-	font: {
-		color:"#2C5EA9"
-	}
+	color:"#2C5EA9"
 }

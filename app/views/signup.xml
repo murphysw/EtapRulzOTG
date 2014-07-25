@@ -1,7 +1,7 @@
 <Alloy>
 	<Window id="SignupWindow">
 		<View class="container">
-			<Label text="Signup" id='title'/>
+			<Label text="eTapestry Trial Database Signup" id='title'/>
 			<Label text="Name *" class="InputLabel"/>
 			<TextField id='name' hintText='enter your name'/>
 			<Label text="Email *" class="InputLabel"/>
@@ -17,8 +17,8 @@
 			<Label text="Make it 6+ characters & include a number" id="passwordRequirements"/>
 			<Label text="ConfirmPassword *" class="InputLabel"/>
 			<TextField id='confirmPassword' class="password" hintText="enter same password as above"/>
-			<Button id='submit'/>
-			<Button id='cancel'/>
+			<Button title="Sign Up" id='submit'/>
+			<Button title="Cancel" id='cancel' />
 		</View>
 	</Window>
 </Alloy>
