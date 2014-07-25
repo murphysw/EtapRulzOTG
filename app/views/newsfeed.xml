@@ -4,6 +4,19 @@
 			<ListView class="container" id="newsfeedList" defaultItemTemplate="basicNewsfeedItem">
 				<SearchBar barColor="#333" />
 				<ListSection id="newsfeedSection" dataCollection="newsfeed" dataTransform="dataTransform">
+					<HeaderView>
+	                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
+	                        <Label>Recent Transactions</Label>
+	                    </View>
+                	</HeaderView>
+					<ListItem subject:text="{subject}" searchableText="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
+				</ListSection>
+				<ListSection id="activitySection" dataCollection="activity" dataTransform="dataTransform">
+					<HeaderView>
+	                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
+	                        <Label>Activities</Label>
+	                    </View>>
+                	</HeaderView>
 					<ListItem subject:text="{subject}" searchableText="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
 				</ListSection>
 				<Templates>

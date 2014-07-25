@@ -1,0 +1,56 @@
+".container": {
+	height: Ti.UI.FILL,
+	top: 20,
+	layout: 'vertical',
+	backgroundColor:"#FFF"
+},
+"#SignupWindow":{
+	backgroundColor:"#FFF"
+},
+".InputLabel":{
+	left: 10
+},
+"#passwordRequirements":{
+	
+},
+"#wrapper": {
+	borderRadius: 8,
+	top: 20,
+	layout: 'vertical'
+},
+"#wrapper[platform=android]": {
+	width: '75%',
+	height: '90%'
+},
+"TextField": {
+	backgroundColor: "#FFF",
+	color: "#888",
+	left: 10, 
+	right: 10,
+	height: '40dp',
+	borderColor: '#888',
+	top: 10
+},
+"#name": {
+	autocorrection: false,
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
+},
+".password": {
+	passwordMask: true,
+	autocorrection: false,
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE
+},
+"#submit": {
+	title: 'Sign Up',
+	backgroundColor: '#AFE890',
+	left: 10, right: 10,
+	height: '40dp',
+	top: 10,
+	color: "#000"
+},
+"#cancel":{
+	
+},
+"#title": {
+	top: 10
+}

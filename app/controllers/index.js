@@ -1,2 +1,1 @@
-var acs = require('acs');
-var controller = Alloy.createController('login').getView().open();
+var controller = Alloy.createController('main').getView().open();

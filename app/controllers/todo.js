@@ -8,11 +8,25 @@ function dataTransform(item) {
 };
 
 $.todoList.addEventListener('itemclick', function(_e) {
-    var detailController = Alloy.createController('task', {
+	var item = Alloy.Collections.todo.models[_e.itemIndex];
+	var controllertype = item.get("type");
+	
+	if(controllertype == "generic")
+		controllertype = "task";
+		
+    var detailController = Alloy.createController(controllerType, {
         parentTab : $.todoTab,
-        data : Alloy.Collections.todo.models[_e.itemIndex]
+        data : item
     });
     $.todoTab.open(detailController.getView());
+    
+	
+		
+    var detailController = Alloy.createController(controllertype, {
+        parentTab : $.newsfeedTab,
+        data : collection.models[_e.itemIndex]
+    });
+    $.newsfeedTab.open(detailController.getView());
 });
 
 todoItems.fetch();

@@ -1,0 +1,12 @@
+<Alloy>
+	<Window id="loginformWindow">
+		<View class="container">
+			<Label text="Login" id='title'/>
+			<Label text="User Name" class="InputLabel"/>
+			<TextField id='name' hintText='enter your user name'/>
+			<Label text="Password" class="InputLabel"/>
+			<TextField id='password' class="password"/>
+			<Button id="loginButton" title="Login"></Button>
+		</View>
+	</Window>
+</Alloy>

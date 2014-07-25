@@ -2,7 +2,12 @@
     <Model src="newsfeed" instance="true" id="newsfeeditem"/> 
 	<Window id="newsfeeditemWindow" class="wrapper" model="$.newsfeeditem" dataTransform="dataTransform">
 		<View id="detailView" class="appView">
-			<Label id="nameLabel" text="{$.newsfeeditem.subject}" ></Label>
+			<Label id="titleLabel" text="Gift" ></Label>
+			<Label id="nameLabel" text="{$.newsfeeditem.name}" ></Label>
+			<Label id="amountLabel" text="{$.newsfeeditem.amount}" ></Label>
+			<Label id="addressLabel" text="{$.newsfeeditem.address}" ></Label>
+			<Label id="phoneLabel" text="{$.newsfeeditem.phone}" ></Label>
+			<Label id="emailLabel" text="{$.newsfeeditem.email}" ></Label>
 		</View>
 	</Window>
 </Alloy>

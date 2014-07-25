@@ -7,8 +7,7 @@
 	border: 1,
 	borderRadius: 2,
 	backgroundColor: "#333",
-	layout: "composite",
-	top: "10dp"
+	layout: "composite"
 },
 "#remindImage": {
 	image: "/button_remind.png"

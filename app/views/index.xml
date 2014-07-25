@@ -1,4 +1,5 @@
 <Alloy>
 	<Collection src="newsfeed" />
 	<Collection src="todo" />
+	<Collection src="activity" />
 </Alloy>

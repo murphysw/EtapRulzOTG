@@ -10,7 +10,7 @@ acs.isLoggedIn(function(){
 
 var createCallback = function(user) {
 	if(user) {
-		var mainController = Alloy.createController('main');
+		var mainController = Alloy.createController('loginform');
     	mainController.getView().open();
 		if(OS_ANDROID) Ti.UI.Android.hideSoftKeyboard();
 	} else {

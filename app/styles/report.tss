@@ -12,4 +12,7 @@
 	layout: "vertical",
 	left: "40dp",
 	top: "20dp"
+},
+"#downloadLabel": {
+	color:"#2C5EA9"
 }

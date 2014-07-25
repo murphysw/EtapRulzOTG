@@ -1,0 +1,11 @@
+<Alloy>
+    <Model src="activity" instance="true" id="activity"/> 
+	<Window id="newsfeeditemWindow" class="wrapper" model="$.activity" dataTransform="dataTransform">
+		<View id="detailView" class="appView">
+			<Label id="nameLabel" text="Release Notes" ></Label>
+			<Label id="nameLabel" text="Here's what's new in eTapestry 7.12.0" ></Label>
+			<Label id="nameLabel" text=" * TinyMCE is upgraded" ></Label>
+			<Label id="nameLabel" text=" * Responsive DIY Pages" ></Label>
+		</View>
+	</Window>
+</Alloy>
