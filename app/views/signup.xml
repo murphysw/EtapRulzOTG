@@ -1,0 +1,24 @@
+<Alloy>
+	<Window id="SignupWindow">
+		<View class="container">
+			<Label text="Signup" id='title'/>
+			<Label text="Name *" class="InputLabel"/>
+			<TextField id='name' hintText='enter your name'/>
+			<Label text="Email *" class="InputLabel"/>
+			<TextField id='email' hintText='jane@nonprofit.com'/>
+			<Label text="Phone *" class="InputLabel"/>
+			<TextField id='phone' hintText='444-555-6666'/>
+			<Label text="Organization *" class="InputLabel"/>
+			<TextField id='organizationName' hintText='enter your organization'/>
+			<Label text="State/Province *" class="InputLabel"/>
+			<TextField id='state' hintText='Indiana'/>
+			<Label text="Password *" class="InputLabel"/>
+			<TextField id='password' class="password" hintText="enter password"/>
+			<Label text="Make it 6+ characters & include a number" id="passwordRequirements"/>
+			<Label text="ConfirmPassword *" class="InputLabel"/>
+			<TextField id='confirmPassword' class="password" hintText="enter same password as above"/>
+			<Button id='submit'/>
+			<Button id='cancel'/>
+		</View>
+	</Window>
+</Alloy>
