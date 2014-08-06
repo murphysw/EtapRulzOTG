@@ -7,13 +7,13 @@ $.taskitem.set("callPhone", "Call: " + args.data.attributes.phone);
 $.parent = args.parentTab;
 
 $.remindImage.addEventListener("click", function() {
-	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=updateFeedItem&type=remind&db=OffTheGrid2&userRef=82.0.4860&taskRef=" + $.taskitem.get("taskRef");
+	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=updateFeedItem&type=remind&db=offthegrid&userRef=43.0.2535&taskRef=" + $.taskitem.get("taskRef");
 	Ti.API.info("Url to remind: " + url);
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
-	         Ti.API.info("Received text: " + this.responseText);
-	         alert("You will be reminded about this task");
 	         $.taskWindow.close();
+	         api.grabTodo();
+	         Alloy.Collection.todo.fetch();
 	     },
 	     onerror : function(e) {
 	         Ti.API.debug(e.error);
@@ -26,12 +26,10 @@ $.remindImage.addEventListener("click", function() {
 });
 
 function dismissTask() {
-	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=updateFeedItem&type=dismiss&db=OffTheGrid2&userRef=82.0.4860&taskRef=" + $.taskitem.get("taskRef");
+	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=updateFeedItem&type=dismiss&db=offthegrid&userRef=43.0.2535&taskRef=" + $.taskitem.get("taskRef");
 	Ti.API.info("Url to dismiss: " + url);
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
-	         Ti.API.info("Received text: " + this.responseText);
-	         alert("Task dismissed");
 	         $.taskWindow.close();
 	         api.grabTodo();
 	         Alloy.Collection.todo.fetch();

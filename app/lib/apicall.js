@@ -1,5 +1,5 @@
 exports.grabTodo = function() {
-	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=getNewsFeed&type=tasks&db=OffTheGrid2&userRef=82.0.4860";
+	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=getNewsFeed&type=tasks&db=offthegrid&userRef=43.0.2535";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received todo tasks: " + this.responseText);
@@ -16,7 +16,7 @@ exports.grabTodo = function() {
 };
 
 exports.grabNewsfeed = function() {
-	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=getNewsFeed&type=news&db=OffTheGrid2&userRef=82.0.4860";
+	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=getNewsFeed&type=news&db=offthegrid&userRef=43.0.2535";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
@@ -33,7 +33,7 @@ exports.grabNewsfeed = function() {
 };
 
 exports.grabActivities = function() {
-	var url = "http://172.24.50.76:8080/prod/restAPI.do?command=getNewsFeed&type=activities&db=OffTheGrid2&userRef=82.0.4860";
+	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=getNewsFeed&type=activities&db=offthegrid&userRef=43.0.2535";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
