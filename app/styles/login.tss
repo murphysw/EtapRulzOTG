@@ -20,24 +20,19 @@
 	top: 10
 },
 "#submit":{
-	top:"20dp",
+	top:"100dp",
 	layout: "vertical",
-	width: 400,
+	width: "400dp",
 },
 "#logo":{
 	top:"20dp",
 	layout: "vertical",
 	width: "100%"
 },
-"#google":{
-	top:"20dp",
-	layout: "vertical",
-	width: 450
-},
 "#title": {
-	top: 10
+	top: "50dp"
 },
 "#signup": {
-	top: 10,
+	top: "10dp",
 	color:"#2C5EA9"
 }

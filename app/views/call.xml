@@ -4,9 +4,9 @@
 		<View id="detailView" class="appView">
 			<Label id="nameLabel" text="{$.taskitem.name}" ></Label>
 			<Label id="phoneLabel" text="{$.taskitem.callPhone}" ></Label>
-			<ImageView id="remindImage" />
-			<ImageView id="doneImage" />
-			<ImageView id="ignoreImage" />
+			<ImageView id="remindImage" class="taskButton" />
+			<ImageView id="doneImage" class="taskButton"/>
+			<ImageView id="ignoreImage" class="taskButton"/>
 		</View>
 	</Window>
 </Alloy>

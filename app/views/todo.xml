@@ -1,23 +1,26 @@
 <Alloy>
-	<Tab id="todoTab" title="Today's Tasks" icon="KS_nav_ui.png">
-		<Window id="todoWindow">
-			<ListView class="container" id="todoList" defaultItemTemplate="template">
-				<HeaderView>
-	                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
-	                        <Label>Your To Do List</Label>
-	                    </View>
-                	</HeaderView>
-				<ListSection id="todoTasks" dataCollection="todo" dataTransform="dataTransform">
-					<ListItem name:text="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
-				</ListSection>
-				<Templates>
-				    <ItemTemplate name="template">
-				        <View id="wrapper" class="row">
-							<Label bindId="name"/>
-						</View>
-				    </ItemTemplate>
-				</Templates>
-			</ListView>
-		</Window>
-	</Tab>
+	<Window id="todoWindow">
+		<ListView class="container" id="todoList" defaultItemTemplate="template">
+			<HeaderView>
+                    <View backgroundColor="#C5C5C5" height="Ti.UI.SIZE">
+                        <Label class="listSectionHeader">Your To Do List</Label>
+                    </View>
+            	</HeaderView>
+			<ListSection id="todoTasks" dataCollection="todo" dataTransform="dataTransform">
+				<ListItem name:text="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
+			</ListSection>
+			<Templates>
+			    <ItemTemplate name="template">
+			        <View id="wrapper" class="row">
+						<Label bindId="name"/>
+					</View>
+			    </ItemTemplate>
+			</Templates>
+			<PullView>
+		      <View height="50" backgroundColor="black">
+		        <Label>Pull to refresh...</Label>
+		      </View>
+		    </PullView>
+		</ListView>
+	</Window>
 </Alloy>

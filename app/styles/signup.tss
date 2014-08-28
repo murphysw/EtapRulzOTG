@@ -43,7 +43,9 @@
 "#submit": {
 	title: 'Sign Up',
 	backgroundColor: '#AFE890',
-	left: 10, right: 10,
+	width: "50%",
+	left: "25%",
+	right: "25%",
 	height: '40dp',
 	top: 10,
 	color: "#000"

@@ -1,13 +1,27 @@
 "Window": {
 	backgroundColor: "transparent"
 },
+"SearchBar": {
+	barColor: "#222"
+},
+"ListView": {
+	backgroundColor: "#FFF"
+},
+"ListItem": {
+	height: "90dp"
+},
+".row": {
+	backgroundColor: "#444",
+	border: 0,
+	hasChild: true
+},
 "Label": {
 	width: Ti.UI.SIZE,
 	height: Ti.UI.SIZE,
 	color: "#000",
 	font: {
-		fontSize: '20dp',
-		fontFamily: 'HelveticaNeue-Light',
+		fontSize: '30dp',
+		fontFamily: 'Roboto-Thin',
 	},
 	textAlign: Ti.UI.TEXT_ALIGNMENT_LEFT,
 	ellipsize: 'false',
@@ -23,4 +37,31 @@
 	left: "10dp",
 	right: "10dp",
 	height: "400dp"
+},
+"#remindImage": {
+	image: "/button_remind.png"
+},
+"#doneImage": {
+	image: "/button_done.png"
+},
+"#ignoreImage": {
+	image: "/button_dismiss.png"
+},
+".taskButton": {
+	width: 250,
+	border: 1,
+	height: 50,
+	borderRadius: 2,
+	backgroundColor: "#333",
+	layout: "composite",
+	top: "20dp"
+},
+".listSectionHeader":
+{
+	font: {
+		fontSize: 30
+	}
+},
+"TabGroup" : {
+	tabsBackgroundColor: "#333"
 }

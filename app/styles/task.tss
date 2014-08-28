@@ -1,22 +1,5 @@
 "#nameLabel" : {
 	height: "120dp",
-	layout: "vertical"
-},
-"ImageView" : {
-	width: 250,
-	border: 1,
-	borderRadius: 2,
-	backgroundColor: "#333",
-	layout: "composite",
-	top: "20dp",
-	height: 50
-},
-"#remindImage": {
-	image: "/button_remind.png"
-},
-"#doneImage": {
-	image: "/button_done.png"
-},
-"#ignoreImage": {
-	image: "/button_dismiss.png"
+	layout: "vertical",
+	left: "20dp"
 }

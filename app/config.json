@@ -3,10 +3,14 @@
 	"env:development": {}, 
 	"env:test": {}, 
 	"env:production": {}, 
-	"os:android": {},
+	"os:android": {
+		"theme":"etapdo"
+	},
 	"os:blackberry": {},
-	"os:ios": {},
+	"os:ios": {
+	},
 	"os:mobileweb": {},
 	"dependencies": {
-	}
+    	"com.jolicode.pullToRefresh": "1.0"
+    }
 }
