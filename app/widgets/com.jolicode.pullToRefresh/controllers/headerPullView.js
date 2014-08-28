@@ -41,14 +41,6 @@ var api = {
                 $.status.width = parameters.status.width ? parameters.status.width: 200;
             }
 
-            if (parameters.lastUpdate) {
-                $.lastUpdate.bottom = parameters.lastUpdate.bottom ? parameters.lastUpdate.bottom :  15,
-                $.lastUpdate.color = parameters.lastUpdate.color ? parameters.lastUpdate.color :  "black",
-                $.lastUpdate.font = parameters.lastUpdate.font ? parameters.lastUpdate.font : { fontSize: 12 },
-                $.lastUpdate.height = parameters.lastUpdate.height ? parameters.lastUpdate.height :  "auto",
-                $.lastUpdate.textAlign = parameters.lastUpdate.textAlign ? parameters.lastUpdate.textAlign : "center";
-                $.lastUpdate.width = parameters.lastUpdate.width ? parameters.lastUpdate.width: 200;
-            }
         }
     },
 
@@ -87,7 +79,6 @@ var api = {
         $.indicator.hide();
         $.arrow.show();
         $.status.text = "Pull to refresh";
-        $.lastUpdate.text = "Updated at " + api.formatDate();
     }
 };
 

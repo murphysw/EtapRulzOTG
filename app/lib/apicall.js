@@ -4,7 +4,7 @@ exports.grabTodo = function() {
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received todo tasks: " + this.responseText);
-	         data = JSON.parse(this.responseText).establishedUserTasks;
+	         data = JSON.parse(this.responseText).establishedUserTasks.reverse();
 	         Alloy.Collections.todo.reset(data);
 	     },
 	     onerror : function(e) {
@@ -23,7 +23,7 @@ exports.grabNewsfeed = function() {
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
-	         data = JSON.parse(this.responseText).newsNewsFeed;
+	         data = JSON.parse(this.responseText).newsNewsFeed.reverse();
 	         Alloy.Collections.newsfeed.reset(data);
 	     },
 	     onerror : function(e) {
@@ -42,7 +42,7 @@ exports.grabActivities = function() {
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
-	         data = JSON.parse(this.responseText).activitiesNewsFeed;
+	         data = JSON.parse(this.responseText).activitiesNewsFeed.reverse();
 	         Alloy.Collections.activity.reset(data);
 	     },
 	     onerror : function(e) {

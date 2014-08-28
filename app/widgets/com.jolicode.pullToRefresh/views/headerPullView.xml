@@ -4,6 +4,5 @@
         <View id="arrow"/>
         <ActivityIndicator id="indicator" />
         <Label id="status"/>
-        <Label id="lastUpdate"/>
     </View>
 </Alloy>
