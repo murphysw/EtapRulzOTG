@@ -1,5 +1,5 @@
 var args = arguments[0] || {};
-
+var apicall = require('apicall');
 var todoItems = Alloy.Collections.todo;
 
 function dataTransform(item) {
@@ -18,7 +18,32 @@ $.todoList.addEventListener('itemclick', function(_e) {
         parentTab : $.todoTab,
         data : item
     });
-    $.todoTab.open(detailController.getView());
+    detailController.getView().open();
 });
 
+var api = {
+    data : {},
+
+    initialize: function() {
+        if (args.pulltorefresh) {
+            args.pulltorefresh.setCallback(api.doRefresh);
+        }
+        api.updateListView();
+    },
+
+    doRefresh: function(e) {
+        // Call your updateListView function
+        api.updateListView();
+    },
+
+    updateListView: function() {
+    	if (args.pulltorefresh) {
+            args.pulltorefresh.stop(240, 20);
+        }
+        
+		apicall.grabTodo();
+    }
+};
+
+api.initialize();
 todoItems.fetch();

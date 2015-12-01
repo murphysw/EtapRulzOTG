@@ -10,11 +10,12 @@
 			<TextField id='phone' hintText='444-555-6666'/>
 			<Label text="Organization *" class="InputLabel"/>
 			<TextField id='organizationName' hintText='enter your organization'/>
+			<Label text="Country *" class="InputLabel"/>
+			<TextField id='country' hintText='United States'/>
 			<Label text="State/Province *" class="InputLabel"/>
 			<TextField id='state' hintText='Indiana'/>
 			<Label text="Password *" class="InputLabel"/>
 			<TextField id='password' class="password" hintText="enter password"/>
-			<Label text="Make it 6+ characters & include a number" id="passwordRequirements"/>
 			<Label text="ConfirmPassword *" class="InputLabel"/>
 			<TextField id='confirmPassword' class="password" hintText="enter same password as above"/>
 			<Button title="Sign Up" id='submit'/>

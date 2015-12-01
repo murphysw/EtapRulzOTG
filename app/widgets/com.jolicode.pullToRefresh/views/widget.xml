@@ -1,0 +1,5 @@
+<Alloy>
+    <Window id="pulltorefresh" class="container">
+        <ScrollView id="container" platform="android" />
+    </Window>
+</Alloy>

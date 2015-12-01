@@ -3,7 +3,6 @@
 		<View id="wrapper">
 			<ImageView id="logo" image="/trent_etap_do_logo.png"></ImageView>
 			<ImageView id="submit" image="/signinwithblackbaud.png"></ImageView>
-			<ImageView id="google" image="/sign-in-with-google.png"></ImageView>
 			<Label text="Don't have an eTapestry account?" id="title"/>
 			<Label text="Start my 30 Day Free Trial" id="signup"/>
 		</View>

@@ -6,7 +6,7 @@ $.taskitem.set(args.data.attributes);
 $.parent = args.parentTab;
 
 $.remindImage.addEventListener("click", function() {
-	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=updateFeedItem&type=remind&db=offthegrid&userRef=43.0.2535&taskRef=" + $.taskitem.get("taskRef");
+	var url = "https://192.168.3.101:8443/prod/restAPI.do?command=updateFeedItem&type=remind&db=offthegrid&userId=etaprules&taskRef=" + $.taskitem.get("taskRef");
 	Ti.API.info("Url to remind: " + url);
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
@@ -25,7 +25,7 @@ $.remindImage.addEventListener("click", function() {
 });
 
 function dismissTask() {
-	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=updateFeedItem&type=dismiss&db=offthegrid&userRef=43.0.2535&taskRef" + $.taskitem.get("taskRef");
+	var url = "https://192.168.3.101:8443/prod/restAPI.do?command=updateFeedItem&type=dismiss&db=offthegrid&userId=etaprules&taskRef" + $.taskitem.get("taskRef");
 	Ti.API.info("Url to dismiss: " + url);
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {

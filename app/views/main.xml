@@ -1,6 +1,10 @@
 <Alloy>
 	<TabGroup id="tabGroup">
-		<Require src="newsfeed"/>
-		<Require src="todo"/>
+		<Tab id="newsfeedTab" title="My Newsfeed">
+			<Widget src="com.jolicode.pullToRefresh" id="refreshnews"/>
+		</Tab>
+		<Tab id="todoTab" title="Today's Tasks">
+			<Widget src="com.jolicode.pullToRefresh" id="refreshtask"/>
+		</Tab>
 	</TabGroup>
 </Alloy>

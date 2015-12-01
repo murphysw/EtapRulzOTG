@@ -2,24 +2,15 @@
 	backgroundColor: "transparent"
 },
 ".container": {
-	backgroundColor: "#d5d5d5"
-},
-"ListItem": {
-	height: "70dp"
-},
-".row": {
-	height: "60dp",
-	backgroundColor: "#444",
-	border: 0,
-	hasChild: true
+	backgroundColor: "#c5c5c5"
 },
 "Label": {
 	width: Ti.UI.SIZE,
-	height: "60dp",
+	height: "80dp",
 	color: "#000",
 	font: {
 		fontSize: 20,
-		fontFamily: 'Helvetica Neue',
+		fontFamily: 'Roboto',
 		fontWeight: 200
 	},
 	backgroundPaddingBottom: "5dp",
@@ -30,7 +21,7 @@
 "#wrapper": {
 	backgroundColor: "#f4f4f4",
 	width: "90%",
-	height: "60dp",
+	height: "80dp",
 	top: "6dp",
 	layout: 'vertical'
 }

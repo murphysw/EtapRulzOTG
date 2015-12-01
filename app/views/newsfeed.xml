@@ -1,32 +1,28 @@
 <Alloy>
-	<Tab id="newsfeedTab" title="My Newsfeed" icon="KS_nav_ui.png">
-		<Window id="newsfeedWindow">
-			<ListView class="container" id="newsfeedList" defaultItemTemplate="basicNewsfeedItem">
-				<SearchBar barColor="#333" />
-				<ListSection id="newsfeedSection" dataCollection="newsfeed" dataTransform="dataTransform">
-					<HeaderView>
-	                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
-	                        <Label>Recent Transactions</Label>
-	                    </View>
-                	</HeaderView>
-					<ListItem subject:text="{subject}" searchableText="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
-				</ListSection>
-				<ListSection id="activitySection" dataCollection="activity" dataTransform="dataTransform">
-					<HeaderView>
-	                    <View backgroundColor="#DDD" height="Ti.UI.SIZE">
-	                        <Label>Activities</Label>
-	                    </View>>
-                	</HeaderView>
-					<ListItem subject:text="{subject}" searchableText="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
-				</ListSection>
-				<Templates>
-				    <ItemTemplate name="basicNewsfeedItem">
-				        <View id="wrapper" class="row">
-				        	<Label bindId="subject" />
-						</View>
-				    </ItemTemplate>
-				</Templates>
-			</ListView>
-		</Window>
-	</Tab>
+	<ListView class="container" id="newsfeedList" defaultItemTemplate="basicNewsfeedItem">
+		<SearchBar />
+		<ListSection id="newsfeedSection" dataCollection="newsfeed" dataTransform="dataTransform">
+			<HeaderView>
+                <View backgroundColor="#C5C5C5" height="Ti.UI.SIZE">
+                    <Label class="listSectionHeader">Recent Transactions</Label>
+                </View>
+        	</HeaderView>
+			<ListItem subject:text="{subject}" searchableText="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
+		</ListSection>
+		<ListSection id="activitySection" dataCollection="activity" dataTransform="dataTransform">
+			<HeaderView>
+                <View backgroundColor="#C5C5C5" height="Ti.UI.SIZE">
+                    <Label class="listSectionHeader">Activities</Label>
+                </View>>
+        	</HeaderView>
+			<ListItem subject:text="{subject}" searchableText="{name}" accessoryType="Ti.UI.LIST_ACCESSORY_TYPE_DISCLOSURE"/>
+		</ListSection>
+		<Templates>
+		    <ItemTemplate name="basicNewsfeedItem">
+		        <View id="wrapper" class="row">
+		        	<Label bindId="subject" />
+				</View>
+		    </ItemTemplate>
+		</Templates>
+	</ListView>
 </Alloy>

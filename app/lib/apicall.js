@@ -1,9 +1,11 @@
 exports.grabTodo = function() {
-	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=getNewsFeed&type=tasks&db=offthegrid&userRef=43.0.2535";
+	var data = {};
+	var url = "https://192.168.3.101:8443/prod/restAPI.do?command=getNewsFeed&type=tasks&db=offthegrid&userRef=43.0.2535&userId=etaprules";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received todo tasks: " + this.responseText);
-	         Alloy.Collections.todo.reset(JSON.parse(this.responseText).establishedUserTasks);
+	         data = JSON.parse(this.responseText).establishedUserTasks.reverse();
+	         Alloy.Collections.todo.reset(data);
 	     },
 	     onerror : function(e) {
 	         Ti.API.debug(e.error);
@@ -16,11 +18,13 @@ exports.grabTodo = function() {
 };
 
 exports.grabNewsfeed = function() {
-	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=getNewsFeed&type=news&db=offthegrid&userRef=43.0.2535";
+	var data = {};
+	var url = "https://192.168.3.101:8443/prod/restAPI.do?command=getNewsFeed&type=news&db=offthegrid&userRef=43.0.2535&userId=etaprules";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
-	         Alloy.Collections.newsfeed.reset(JSON.parse(this.responseText).newsNewsFeed);
+	         data = JSON.parse(this.responseText).newsNewsFeed.reverse();
+	         Alloy.Collections.newsfeed.reset(data);
 	     },
 	     onerror : function(e) {
 	         Ti.API.debug(e.error);
@@ -33,11 +37,13 @@ exports.grabNewsfeed = function() {
 };
 
 exports.grabActivities = function() {
-	var url = "http://192.168.3.101:8080/prod/restAPI.do?command=getNewsFeed&type=activities&db=offthegrid&userRef=43.0.2535";
+	var data = {};
+	var url = "https://192.168.3.101:8443/prod/restAPI.do?command=getNewsFeed&type=activities&db=offthegrid&userRef=43.0.2535&userId=etaprules";
 	var client = Ti.Network.createHTTPClient({
 	     onload : function(e) {
 	         Ti.API.info("Received text: " + this.responseText);
-	         Alloy.Collections.activity.reset(JSON.parse(this.responseText).activitiesNewsFeed);
+	         data = JSON.parse(this.responseText).activitiesNewsFeed.reverse();
+	         Alloy.Collections.activity.reset(data);
 	     },
 	     onerror : function(e) {
 	         Ti.API.debug(e.error);

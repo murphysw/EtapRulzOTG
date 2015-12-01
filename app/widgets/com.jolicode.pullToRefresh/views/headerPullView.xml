@@ -1,0 +1,8 @@
+<Alloy>
+    <View>
+        <View id="border"/>
+        <View id="arrow"/>
+        <ActivityIndicator id="indicator" />
+        <Label id="status"/>
+    </View>
+</Alloy>

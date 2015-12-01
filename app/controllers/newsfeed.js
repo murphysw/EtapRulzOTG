@@ -1,6 +1,36 @@
 var args = arguments[0] || {};
-
+var apicall = require('apicall');
 var newsfeedItems = Alloy.Collections.newsfeed;
+
+var api = {
+    data : {},
+
+    initialize: function() {
+        if (args.pulltorefresh) {
+            args.pulltorefresh.setCallback(api.doRefresh);
+        }
+        
+        api.updateListView();
+    },
+
+    doRefresh: function(e) {
+        // Call your updateListView function
+        api.updateListView();
+    },
+
+    updateListView: function() {
+        if (args.pulltorefresh) {
+            args.pulltorefresh.stop(240, 20);
+        }
+
+        apicall.grabNewsfeed();
+		apicall.grabActivities();
+    }
+};
+
+
+
+api.initialize();
 
 function dataTransform(item) {
 	
@@ -40,7 +70,7 @@ $.newsfeedList.addEventListener('itemclick', function(_e) {
         parentTab : $.newsfeedTab,
         data : collection.models[_e.itemIndex]
     });
-    $.newsfeedTab.open(detailController.getView());
+    detailController.getView().open();
 });
 
 newsfeedItems.fetch();
